@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --header-bg: #68A042; 
+  --background: #cdffcf;
+  --foreground: #171717;
+}
+
+.dark {
+  --header-bg: #244539; 
+  --background: #1a1a1a; 
+  --foreground: #ededed;
+}
+
+@theme {
+  /* On utilise le nom de couleur Tailwind standard pour tester */
+  --color-header: var(--header-bg);
+}
+
+/* Force l'application sur le header pour tester sans Tailwind */
+header {
+  background-color: var(--header-bg) !important;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Time New Roman';
+}
