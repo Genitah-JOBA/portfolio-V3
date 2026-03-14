@@ -500,4 +500,4 @@ export default function Footer() {
       </div>
     </motion.footer>
   );
-}
+}"// Footer version $(date)" 
