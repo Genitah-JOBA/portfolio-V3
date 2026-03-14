@@ -13,7 +13,7 @@ export async function POST(req: Request) {
       from: 'onboarding@resend.dev',
       to: ['genitahrazafindrasoa@gmail.com'], // Votre email pour recevoir les messages
       subject: `Portfolio - Message de ${name}: ${subject}`,
-      reply_to: email,
+      replyTo: email,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #21D375; border-bottom: 2px solid #21D375; padding-bottom: 10px;">
