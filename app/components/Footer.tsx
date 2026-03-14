@@ -250,7 +250,7 @@ export default function Footer() {
                       }}
                       transition={{ duration: 3, delay: index * 0.5, repeat: Infinity }}
                     >
-                      <item.icon size={14} className="text-gray-500 group-hover:transition-colors" style={{ groupHover: { color: lightColor } }} />
+                      <item.icon size={14} className="text-gray-500 group-hover:text-[#21D375] transition-colors" style={{ color: lightColor }} />
                     </motion.div>
                     <span className="group-hover:transition-colors" style={{ groupHover: { color: lightColor } }}>
                       {item.name}
