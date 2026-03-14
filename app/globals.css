@@ -3,24 +3,23 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --header-bg: #68A042; 
-  --background: #cdffcf;
+  --header-bg: #A2CA6C; 
+  --background: #ffffff;
   --foreground: #171717;
 }
 
 .dark {
   --header-bg: #244539; 
-  --background: #1a1a1a; 
+  --background: #0e0c0c; 
   --foreground: #ededed;
 }
 
 @theme {
-  /* On utilise le nom de couleur Tailwind standard pour tester */
   --color-header: var(--header-bg);
 }
 
-/* Force l'application sur le header pour tester sans Tailwind */
-header {
+/* Correction : cibler uniquement le header avec la classe bg-custom-header */
+.bg-custom-header {
   background-color: var(--header-bg) !important;
 }
 
@@ -28,4 +27,17 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: 'Time New Roman';
+}
+
+footer {
+  margin-top: auto;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
 }
