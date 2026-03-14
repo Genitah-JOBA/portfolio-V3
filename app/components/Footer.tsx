@@ -209,7 +209,7 @@ export default function Footer() {
             >
               <MapPin size={12} style={{ color: lightColor }} className="dark:text-[#21D375]" />
               <span>Madagascar</span>
-              <Clock size={12} className="ml-2" style={{ color: lightColor }} className="dark:text-[#21D375]" />
+              <Clock size={12} style={{ color: lightColor }} className="ml-2 dark:text-[#21D375]" />
               <span>UTC+3</span>
             </motion.div>
           </motion.div>
