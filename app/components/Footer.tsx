@@ -328,7 +328,7 @@ export default function Footer() {
                       animate={{ 
                         opacity: [1, 0.7, 1],
                       }}
-                      style={{ originX: 0, backgroundColor: lightColor }}
+                      style={{ backgroundColor: lightColor }}
                     />
                   </div>
                 </motion.div>
