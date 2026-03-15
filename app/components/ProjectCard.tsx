@@ -20,7 +20,7 @@ import {
 import { useState } from "react";
 
 // ================= COMPOSANT PARTICULE =================
-const ParticleCard = ({ children }) => {
+const ParticleCard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isBroken, setIsBroken] = useState(false);
 
   // Création des particules avec des positions aléatoires
