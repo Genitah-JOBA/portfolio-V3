@@ -20,24 +20,31 @@ import {
   IconBrandSupabase, IconBrandVscode,
   IconBrandNetbeans, IconGitBranch, IconTerminal2, 
   IconDatabase, IconCode, IconFileCode, IconBrandGit,
-  // Remplacer IconBrandIntellij par une alternative existante
-  IconBrandAndroid, // ou une autre icône appropriée
+  IconBrandAndroid,
 } from '@tabler/icons-react';
 import { 
   FileCode2, Code, Database, Terminal, Layout, 
   SquareTerminal 
 } from "lucide-react";
 
+// ========== DÉFINITIONS DES TYPES - À METTRE EN TOUT PREMIER ==========
 type MessageType = 'success' | 'error' | 'info' | 'warning';
+
+interface MessageBoxState {
+  show: boolean;
+  type: MessageType;
+  message: string;
+}
 
 interface MessageBoxProps {
   message: string;
   type: MessageType;
   onClose: () => void;
   dark?: boolean;
-  duration?: number; // Durée optionnelle en ms
+  duration?: number;
 }
 
+// ================= COMPOSANT MESSAGE BOX =================
 const MessageBox = ({ 
   message, 
   type, 
