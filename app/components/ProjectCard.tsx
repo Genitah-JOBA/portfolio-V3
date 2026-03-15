@@ -197,7 +197,19 @@ const projects = [
 // ================= COMPOSANT PRINCIPAL =================
 export default function Home() {
   const [filter, setFilter] = useState("All");
-  const [selectedProject, setSelectedProject] = useState(null);
+  interface Project {
+    id: number;
+    title: string;
+    category: string;
+    desc: string;
+    image: string;
+    tags: string[];
+    github: string;
+    demo: string;
+  }
+
+  // Ensuite, typage correct du state
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const filteredProjects = filter === "All" 
     ? projects 
