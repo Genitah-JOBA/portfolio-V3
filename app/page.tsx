@@ -28,15 +28,41 @@ import {
   SquareTerminal 
 } from "lucide-react";
 
-// ================= COMPOSANT MESSAGE BOX =================
-const MessageBox = ({ message, type, onClose, dark }) => {
+type MessageType = 'success' | 'error' | 'info' | 'warning';
+
+interface MessageBoxProps {
+  message: string;
+  type: MessageType;
+  onClose: () => void;
+  dark?: boolean;
+  duration?: number; // Durée optionnelle en ms
+}
+
+const MessageBox = ({ 
+  message, 
+  type, 
+  onClose, 
+  dark = false,
+  duration = 5000 
+}: MessageBoxProps) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       onClose();
-    }, 5000);
+    }, duration);
 
     return () => clearTimeout(timer);
-  }, [onClose]);
+  }, [onClose, duration]);
+
+  // Couleurs en fonction du type
+  const getBgColor = () => {
+    switch(type) {
+      case 'success': return 'bg-green-500';
+      case 'error': return 'bg-red-500';
+      case 'warning': return 'bg-yellow-500';
+      case 'info': return 'bg-blue-500';
+      default: return 'bg-gray-500';
+    }
+  };
 
   return (
     <motion.div
