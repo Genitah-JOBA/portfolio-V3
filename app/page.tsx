@@ -320,8 +320,11 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
   
-  // État pour la MessageBox
-  const [messageBox, setMessageBox] = useState({ show: false, type: '', message: '' });
+  const [messageBox, setMessageBox] = useState<MessageBoxState>({ 
+    show: false, 
+    type: '', 
+    message: '' 
+  });
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
