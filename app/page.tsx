@@ -28,11 +28,11 @@ import {
 } from "lucide-react";
 
 // ========== DÉFINITIONS DES TYPES - À METTRE EN TOUT PREMIER ==========
-type MessageType = 'success' | 'error' | 'info' | 'warning' | 'none';
+type MessageType = 'success' | 'error' | 'info' | 'warning';
 
 interface MessageBoxState {
   show: boolean;
-  type: MessageType;
+  type: MessageType | null;
   message: string;
 }
 
@@ -329,7 +329,7 @@ export default function Home() {
   
   const [messageBox, setMessageBox] = useState<MessageBoxState>({ 
     show: false, 
-    type: '', 
+    type: null, 
     message: '' 
   });
 
