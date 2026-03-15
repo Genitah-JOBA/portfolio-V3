@@ -28,17 +28,17 @@ import {
 } from "lucide-react";
 
 // ========== DÉFINITIONS DES TYPES - À METTRE EN TOUT PREMIER ==========
-type MessageType = 'success' | 'error' | 'info' | 'warning';
+type MessageType = 'success' | 'error' | 'info' | 'warning' | '';
 
 interface MessageBoxState {
   show: boolean;
-  type: MessageType | null;
+  type: MessageType;  // Accepte '' comme valeur
   message: string;
 }
 
 interface MessageBoxProps {
   message: string;
-  type: MessageType;
+  type: MessageType;  // Doit correspondre exactement
   onClose: () => void;
   dark?: boolean;
   duration?: number;
@@ -329,7 +329,7 @@ export default function Home() {
   
   const [messageBox, setMessageBox] = useState<MessageBoxState>({ 
     show: false, 
-    type: null, 
+    type: '',  // Maintenant '' est valide
     message: '' 
   });
 
@@ -397,7 +397,11 @@ export default function Home() {
             message={messageBox.message}
             type={messageBox.type}
             dark={dark}
-            onClose={() => setMessageBox({ show: false, type: '', message: '' })}
+            onClose={() => setMessageBox({ 
+              show: false, 
+              type: '',  // Maintenant '' est valide
+              message: '' 
+            })}
           />
         )}
       </AnimatePresence>
