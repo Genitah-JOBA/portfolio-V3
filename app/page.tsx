@@ -27,6 +27,16 @@ import {
   SquareTerminal 
 } from "lucide-react";
 
+interface Project {
+  id: number;
+  title: string;
+  category: string;
+  desc: string;
+  image: string;
+  tags: string[];
+  demo: string;
+}
+
 // ========== DÉFINITIONS DES TYPES - À METTRE EN TOUT PREMIER ==========
 type MessageType = 'success' | 'error' | 'info' | 'warning' | '';
 
@@ -323,7 +333,7 @@ const projects = [
 export default function Home() {
   const [dark, setDark] = useState(true); 
   const [filter, setFilter] = useState("All");
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [loading, setLoading] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
   
