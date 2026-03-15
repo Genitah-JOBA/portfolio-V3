@@ -323,7 +323,7 @@ export default function Home() {
   // État pour la MessageBox
   const [messageBox, setMessageBox] = useState({ show: false, type: '', message: '' });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!formRef.current) return;
     
