@@ -17,7 +17,7 @@ import {
   IconX, IconBrandHtml5, IconBrandCss3, IconBrandJavascript,
   IconBrandVue, IconBrandLaravel, IconBrandPython,
   IconBrandVercel, IconCoffee, IconBrandCSharp,
-  IconBrandSupabase, IconBrandRender, IconBrandVscode,
+  IconBrandSupabase, IconBrandVscode,
   IconBrandNetbeans, IconGitBranch, IconTerminal2, 
   IconDatabase, IconCode, IconFileCode, IconBrandGit,
   // Remplacer IconBrandIntellij par une alternative existante
