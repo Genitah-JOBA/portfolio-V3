@@ -81,7 +81,7 @@ export default function Header() {
       rotateX: 0,
       filter: "blur(0px)",
       transition: {
-        type: "spring",
+        type: "spring" as const,
         damping: 12,
         stiffness: 80,
         duration: 0.8,
