@@ -28,7 +28,7 @@ import {
 } from "lucide-react";
 
 // ========== DÉFINITIONS DES TYPES - À METTRE EN TOUT PREMIER ==========
-type MessageType = 'success' | 'error' | 'info' | 'warning';
+type MessageType = 'success' | 'error' | 'info' | 'warning' | 'none';
 
 interface MessageBoxState {
   show: boolean;
