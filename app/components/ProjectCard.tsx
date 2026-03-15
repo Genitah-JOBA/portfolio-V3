@@ -19,6 +19,23 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 
+interface Project {
+  id: number;
+  title: string;
+  category: string;
+  desc: string;
+  image: string;
+  tags: string[];
+  github: string;
+  demo: string;
+}
+
+// Interface pour les props du composant ProjectCard
+interface ProjectCardProps {
+  project: Project;
+  // Ajoutez d'autres props si nécessaire
+}
+
 // ================= COMPOSANT PARTICULE =================
 const ParticleCard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isBroken, setIsBroken] = useState(false);
