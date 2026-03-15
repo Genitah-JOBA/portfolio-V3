@@ -475,8 +475,7 @@ export default function Footer() {
               >
                 <Link 
                   href={`/${item.name.toLowerCase()}`} 
-                  className="hover:transition-colors flex items-center gap-1"
-                  style={{ hover: { color: lightColor } }}
+                  className={`hover:transition-colors flex items-center gap-1 hover:text-[${lightColor}]`}
                 >
                   <item.icon size={10} style={{ color: 'inherit' }} />
                   {item.name}
