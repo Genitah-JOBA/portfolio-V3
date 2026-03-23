@@ -41,3 +41,16 @@ footer {
 .animate-shimmer {
   animation: shimmer 2s infinite;
 }
+
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 0.1;
+    }
+    50% {
+      opacity: 0.18;
+    }
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse-slow 8s ease-in-out infinite;
+  }

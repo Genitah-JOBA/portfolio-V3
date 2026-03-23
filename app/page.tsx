@@ -774,94 +774,111 @@ export default function Home() {
 
         {/* SECTION ABOUT */}
         <section id="about" className="py-20 px-6 overflow-hidden relative">
-  {/* Éléments d'arrière-plan animés - OPTIMISÉS */}
+  {/* Éléments d'arrière-plan animés - OPTIMISÉS ET PERFORMANTS */}
   <div className="absolute inset-0 overflow-hidden pointer-events-none">
-    {/* Grille statique avec légère animation - plus légère */}
+    {/* Grille statique avec animation d'opacité seulement */}
     <div 
-      className="absolute inset-0"
+      className="absolute inset-0 animate-pulse-slow"
       style={{
         backgroundImage: `radial-gradient(circle at 1px 1px, #A2CA6C 1px, transparent 0)`,
         backgroundSize: '40px 40px',
-        opacity: 0.1
+        opacity: 0.12
       }}
     />
-    
-    {/* Un seul cercle concentrique au lieu de 4 */}
+
+    {/* Un seul cercle concentrique élégant */}
     <motion.div
-      className="absolute rounded-full border-2 border-[#A2CA6C]/20"
+      className="absolute rounded-full border border-[#A2CA6C]/20"
       style={{
         left: '50%',
         top: '50%',
-        width: '400px',
-        height: '400px',
-        marginLeft: '-200px',
-        marginTop: '-200px',
+        width: '450px',
+        height: '450px',
+        marginLeft: '-225px',
+        marginTop: '-225px',
       }}
       animate={{
-        scale: [1, 1.1, 1],
+        scale: [1, 1.08, 1],
         rotate: [0, 360],
       }}
       transition={{
-        duration: 20,
+        duration: 25,
         repeat: Infinity,
         ease: "linear"
       }}
     />
 
-    {/* Particules réduites et optimisées */}
-    <div className="absolute inset-0">
-      {Array.from({ length: 20 }).map((_, i) => {
-        const angle = (i / 20) * Math.PI * 2;
-        const radius = 150 + Math.random() * 100;
-        const x = 50 + Math.cos(angle) * (radius / 4);
-        const y = 50 + Math.sin(angle) * (radius / 4);
-        
-        return (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 rounded-full"
-            style={{
-              left: `${x}%`,
-              top: `${y}%`,
-              background: i % 2 === 0 ? '#A2CA6C' : '#244539',
-              opacity: 0.3,
-            }}
-            animate={{
-              scale: [1, 1.5, 1],
-              opacity: [0.2, 0.5, 0.2],
-            }}
-            transition={{
-              duration: 3 + Math.random() * 2,
-              repeat: Infinity,
-              delay: i * 0.1,
-              ease: "easeInOut"
-            }}
-          />
-        );
-      })}
-    </div>
+    {/* Particules élégantes en mouvement orbital */}
+    {Array.from({ length: 24 }).map((_, i) => {
+      const angle = (i / 24) * Math.PI * 2;
+      const radius = 200 + Math.sin(i) * 30;
+      const delay = i * 0.15;
+      
+      return (
+        <motion.div
+          key={i}
+          className="absolute w-1 h-1 rounded-full"
+          style={{
+            left: '50%',
+            top: '50%',
+            background: i % 3 === 0 ? '#A2CA6C' : i % 3 === 1 ? '#244539' : '#A2CA6C80',
+          }}
+          animate={{
+            x: [Math.cos(angle) * radius, Math.cos(angle + Math.PI) * radius, Math.cos(angle) * radius],
+            y: [Math.sin(angle) * radius, Math.sin(angle + Math.PI) * radius, Math.sin(angle) * radius],
+            scale: [0.5, 1.2, 0.5],
+            opacity: [0.2, 0.6, 0.2],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            delay: delay,
+            ease: "linear"
+          }}
+        />
+      );
+    })}
   </div>
 
   <div className="max-w-6xl mx-auto relative z-10">
-    {/* Titre avec animation simplifiée mais élégante */}
+    {/* Titre avec animation élégante et fluide */}
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className="text-center mb-16"
     >
       <h2 className="text-5xl md:text-7xl font-bold inline-block relative">
-        <span className="bg-gradient-to-r from-[#A2CA6C] to-[#244539] bg-clip-text text-transparent">
+        <span className="bg-gradient-to-r from-[#A2CA6C] via-[#21D375] to-[#244539] bg-clip-text text-transparent">
           ABOUT
         </span>
-        {/* Ligne décorative simple */}
+        
+        {/* Ligne décorative animée */}
         <motion.div
-          className="absolute -bottom-4 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-[#A2CA6C] to-transparent"
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
+          className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 h-0.5 bg-gradient-to-r from-transparent via-[#A2CA6C] to-transparent"
+          initial={{ width: 0 }}
+          whileInView={{ width: "80%" }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.3 }}
+        />
+        
+        {/* Petit point brillant */}
+        <motion.div
+          className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-2 h-2 rounded-full bg-[#A2CA6C]"
+          initial={{ scale: 0 }}
+          whileInView={{ scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          animate={{
+            scale: [1, 1.3, 1],
+            opacity: [0.5, 1, 0.5],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            delay: 0.8,
+          }}
         />
       </h2>
       
@@ -869,20 +886,20 @@ export default function Home() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mt-6"
+        transition={{ duration: 0.6, delay: 0.4 }}
+        className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mt-8"
       >
         Découvrez mon parcours et ma passion pour le développement
       </motion.p>
     </motion.div>
 
-    <div className="grid md:grid-cols-2 gap-12 items-center">
+    <div className="grid md:grid-cols-2 gap-12 items-start">
       {/* Texte avec apparition fluide */}
       <motion.div
         initial={{ opacity: 0, x: -30 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.5, delay: 0.2 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       >
         <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6 text-lg">
           As a passionate freelance Fullstack developer, I design modern, robust, and scalable web applications. 
@@ -894,117 +911,179 @@ export default function Home() {
           with an emphasis on code quality, user experience and performance.
         </p>
 
-        {/* Indicateur d'expertise simplifié */}
+        {/* Indicateur d'expertise élégant */}
         <motion.div 
-          className="flex items-center gap-3 mt-8"
+          className="flex items-center gap-3 mt-8 p-4 rounded-xl bg-gradient-to-r from-[#A2CA6C]/10 to-transparent"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
         >
-          <div className="w-10 h-10 rounded-full bg-[#A2CA6C]/20 flex items-center justify-center">
-            <div className="w-2 h-2 bg-[#A2CA6C] rounded-full animate-pulse" />
+          <div className="relative">
+            <div className="w-10 h-10 rounded-full bg-[#A2CA6C]/20 flex items-center justify-center">
+              <div className="w-2 h-2 bg-[#A2CA6C] rounded-full" />
+            </div>
+            <motion.div
+              className="absolute inset-0 rounded-full border border-[#A2CA6C]/50"
+              animate={{
+                scale: [1, 1.5, 1],
+                opacity: [0.5, 0, 0.5],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeOut",
+              }}
+            />
           </div>
-          <span className="text-sm text-[#A2CA6C] dark:text-[#21D375] font-medium">
-            Expertise fullstack confirmée
-          </span>
+          <div>
+            <span className="text-sm font-semibold text-[#A2CA6C] dark:text-[#21D375]">
+              Expertise fullstack confirmée
+            </span>
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              5+ technologies maîtrisées
+            </p>
+          </div>
         </motion.div>
       </motion.div>
 
-      {/* Blocs valeurs avec animations au hover seulement */}
+      {/* Blocs valeurs avec animations au hover uniquement */}
       <motion.div 
         className="space-y-5"
         initial={{ opacity: 0, x: 30 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.5, delay: 0.3 }}
+        transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
       >
         {/* Carte Expertise technique */}
         <motion.div
-          whileHover={{ scale: 1.02, x: 5 }}
-          transition={{ duration: 0.2 }}
-          className="p-5 rounded-xl bg-gradient-to-br from-[#A2CA6C] to-[#8BB55C] dark:from-[#244539] dark:to-[#1A3329] shadow-md cursor-pointer"
+          whileHover={{ 
+            scale: 1.02, 
+            x: 5,
+            transition: { duration: 0.2 }
+          }}
+          className="p-5 rounded-xl bg-gradient-to-br from-[#A2CA6C] to-[#8BB55C] dark:from-[#244539] dark:to-[#1A3329] shadow-md cursor-pointer group"
         >
           <div className="flex items-start gap-4">
-            <div className="p-2 bg-white/20 rounded-lg">
+            <div className="p-2 bg-white/20 rounded-lg group-hover:scale-110 transition-transform duration-300">
               <Cpu size={28} className="text-black dark:text-white" />
             </div>
-            <div>
+            <div className="flex-1">
               <h3 className="text-lg font-semibold mb-1 text-black dark:text-white">
                 Expertise technique
               </h3>
               <p className="text-black/80 dark:text-white/90 text-sm">
-                Full-stack development with a clean architecture.
+                Full-stack development with clean architecture and best practices.
               </p>
+              {/* Mini barre de progression décorative */}
+              <div className="mt-3 h-1 bg-white/20 rounded-full overflow-hidden">
+                <div className="h-full w-3/4 bg-white/60 rounded-full" />
+              </div>
             </div>
           </div>
         </motion.div>
 
         {/* Carte Performance */}
         <motion.div
-          whileHover={{ scale: 1.02, x: 5 }}
-          transition={{ duration: 0.2 }}
-          className="p-5 rounded-xl bg-gradient-to-br from-[#A2CA6C] to-[#8BB55C] dark:from-[#244539] dark:to-[#1A3329] shadow-md cursor-pointer"
+          whileHover={{ 
+            scale: 1.02, 
+            x: 5,
+            transition: { duration: 0.2 }
+          }}
+          className="p-5 rounded-xl bg-gradient-to-br from-[#A2CA6C] to-[#8BB55C] dark:from-[#244539] dark:to-[#1A3329] shadow-md cursor-pointer group"
         >
           <div className="flex items-start gap-4">
-            <div className="p-2 bg-white/20 rounded-lg">
+            <div className="p-2 bg-white/20 rounded-lg group-hover:rotate-12 transition-transform duration-300">
               <IconGauge size={28} stroke={1.5} className="text-black dark:text-white" />
             </div>
-            <div>
+            <div className="flex-1">
               <h3 className="text-lg font-semibold mb-1 text-black dark:text-white">
-                Performance
+                Performance optimisée
               </h3>
               <p className="text-black/80 dark:text-white/90 text-sm">
-                Fast, SEO-optimized applications.
+                Fast, SEO-optimized applications with 90+ Lighthouse scores.
               </p>
+              {/* Indicateur de vitesse */}
+              <div className="flex gap-1 mt-3">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <div key={i} className="h-1 flex-1 bg-white/20 rounded-full overflow-hidden">
+                    <div 
+                      className="h-full bg-white/60 rounded-full" 
+                      style={{ width: i === 5 ? '100%' : `${i * 20}%` }}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </motion.div>
 
         {/* Carte Collaboration */}
         <motion.div
-          whileHover={{ scale: 1.02, x: 5 }}
-          transition={{ duration: 0.2 }}
-          className="p-5 rounded-xl bg-gradient-to-br from-[#A2CA6C] to-[#8BB55C] dark:from-[#244539] dark:to-[#1A3329] shadow-md cursor-pointer"
+          whileHover={{ 
+            scale: 1.02, 
+            x: 5,
+            transition: { duration: 0.2 }
+          }}
+          className="p-5 rounded-xl bg-gradient-to-br from-[#A2CA6C] to-[#8BB55C] dark:from-[#244539] dark:to-[#1A3329] shadow-md cursor-pointer group"
         >
           <div className="flex items-start gap-4">
-            <div className="p-2 bg-white/20 rounded-lg">
+            <div className="p-2 bg-white/20 rounded-lg group-hover:-translate-y-1 transition-transform duration-300">
               <Handshake size={28} weight="duotone" className="text-black dark:text-white" />
             </div>
-            <div>
+            <div className="flex-1">
               <h3 className="text-lg font-semibold mb-1 text-black dark:text-white">
-                Collaboration
+                Collaboration proactive
               </h3>
               <p className="text-black/80 dark:text-white/90 text-sm">
-                Clear communication and strategic support.
+                Clear communication, agile methodology, and strategic support.
               </p>
+              {/* Indicateur de collaboration */}
+              <div className="flex gap-1 mt-3">
+                {[1, 2, 3].map((i) => (
+                  <motion.div
+                    key={i}
+                    className="w-6 h-6 rounded-full bg-white/20"
+                    animate={{
+                      scale: [1, 1.1, 1],
+                    }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                      delay: i * 0.2,
+                    }}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </motion.div>
       </motion.div>
     </div>
     
-    {/* Bouton d'action simplifié mais élégant */}
+    {/* Bouton d'action élégant */}
     <motion.div
       className="text-center mt-12"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: 0.5 }}
+      transition={{ duration: 0.6, delay: 0.6 }}
     >
-      <a
+      <motion.a
         href="#contact"
-        className="inline-flex items-center gap-2 px-8 py-3 bg-[#A2CA6C] dark:bg-[#244539] text-white font-medium rounded-full hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 group"
+        className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-[#A2CA6C] to-[#8BB55C] dark:from-[#244539] dark:to-[#1A3329] text-white font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group"
+        whileHover={{ scale: 1.03 }}
+        whileTap={{ scale: 0.98 }}
       >
         <span>Let's work together</span>
         <motion.span
-          animate={{ x: [0, 3, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
+          animate={{ x: [0, 4, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
           className="group-hover:translate-x-1 transition-transform"
         >
           →
         </motion.span>
-      </a>
+      </motion.a>
     </motion.div>
   </div>
 </section>
