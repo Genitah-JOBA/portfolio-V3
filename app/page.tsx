@@ -1880,564 +1880,564 @@ export default function Home() {
         </div>
 
         {/* CONTACT SECTION - DESIGN SPECTACULAIRE */}
-<motion.section
-  id="contact"
-  initial={{ opacity: 0 }}
-  whileInView={{ opacity: 1 }}
-  viewport={{ once: false, margin: "-100px" }}
-  className="w-full max-w-[800px] mt-32 mb-16 mx-auto rounded-[2rem] px-8 py-6 border backdrop-blur-sm relative overflow-hidden"
-  style={{
-    backgroundColor: dark ? '#244539' : '#A2CA6C',
-    borderColor: dark ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.1)',
-    boxShadow: dark 
-      ? '0 20px 50px rgba(0,0,0,0.7)' 
-      : '0 20px 40px rgba(0,0,0,0.12)'
-  }}
->
-  {/* ========== ANIMATIONS DE FOND PERMANENTES ========== */}
-  
-  {/* Effet de vagues lumineuses */}
-  <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20" preserveAspectRatio="none">
-    <defs>
-      <linearGradient id="contactWave" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#A2CA6C" stopOpacity="0">
-          <animate attributeName="stop-opacity" values="0;0.5;0" dur="3s" repeatCount="indefinite" />
-        </stop>
-        <stop offset="50%" stopColor="#A2CA6C" stopOpacity="0.3">
-          <animate attributeName="stop-opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite" />
-        </stop>
-        <stop offset="100%" stopColor="#A2CA6C" stopOpacity="0">
-          <animate attributeName="stop-opacity" values="0;0.5;0" dur="3s" repeatCount="indefinite" />
-        </stop>
-      </linearGradient>
-    </defs>
-    <motion.path
-      d="M0,100 Q150,50 300,100 T600,100 T900,80 T1200,100 T1500,90"
-      stroke="url(#contactWave)"
-      strokeWidth="2"
-      fill="none"
-      animate={{
-        d: [
-          "M0,100 Q150,50 300,100 T600,100 T900,80 T1200,100 T1500,90",
-          "M0,120 Q150,80 300,120 T600,110 T900,100 T1200,120 T1500,110",
-          "M0,80 Q150,110 300,80 T600,90 T900,100 T1200,80 T1500,90",
-          "M0,100 Q150,50 300,100 T600,100 T900,80 T1200,100 T1500,90",
-        ]
-      }}
-      transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-    />
-  </svg>
-
-  {/* Cercles pulsants */}
-  {[...Array(3)].map((_, i) => (
-    <motion.div
-      key={i}
-      className="absolute rounded-full border border-[#A2CA6C]/30"
-      style={{
-        left: '50%',
-        top: '50%',
-        width: `${200 + i * 80}px`,
-        height: `${200 + i * 80}px`,
-        marginLeft: `-${100 + i * 40}px`,
-        marginTop: `-${100 + i * 40}px`,
-      }}
-      animate={{
-        scale: [1, 1.2, 1],
-        opacity: [0.1, 0.3, 0.1],
-      }}
-      transition={{
-        duration: 4 + i,
-        repeat: Infinity,
-        delay: i * 0.5,
-        ease: "easeInOut",
-      }}
-    />
-  ))}
-
-  {/* Particules flottantes */}
-  {Array.from({ length: 40 }).map((_, i) => (
-    <motion.div
-      key={`particle-${i}`}
-      className="absolute rounded-full"
-      style={{
-        width: Math.random() * 4 + 1 + 'px',
-        height: Math.random() * 4 + 1 + 'px',
-        background: i % 2 === 0 ? '#A2CA6C' : '#244539',
-        left: Math.random() * 100 + '%',
-        top: Math.random() * 100 + '%',
-        filter: 'blur(1px)',
-      }}
-      animate={{
-        y: [0, Math.random() * 80 - 40, 0],
-        x: [0, Math.random() * 60 - 30, 0],
-        opacity: [0, 0.6, 0],
-        scale: [0, 1.5, 0],
-      }}
-      transition={{
-        duration: 6 + Math.random() * 4,
-        repeat: Infinity,
-        delay: Math.random() * 5,
-        ease: "easeInOut",
-      }}
-    />
-  ))}
-
-  {/* Lignes lumineuses horizontales */}
-  {[...Array(4)].map((_, i) => (
-    <motion.div
-      key={`line-${i}`}
-      className="absolute h-px bg-gradient-to-r from-transparent via-[#A2CA6C] to-transparent"
-      style={{
-        top: `${15 + i * 25}%`,
-        left: 0,
-        right: 0,
-      }}
-      animate={{
-        x: ['-100%', '100%'],
-        opacity: [0, 0.5, 0],
-      }}
-      transition={{
-        duration: 5 + i,
-        repeat: Infinity,
-        delay: i * 0.8,
-        ease: "linear",
-      }}
-    />
-  ))}
-
-  <div className="relative z-10">
-    {/* TITRE AVEC ANIMATION SPECTACULAIRE */}
-    <motion.div
-      initial={{ opacity: 0, y: -50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, margin: "-50px" }}
-      transition={{ 
-        type: "spring", 
-        stiffness: 100, 
-        damping: 15,
-        duration: 0.8 
-      }}
-      className="text-center mb-8"
-    >
-      <h2 className="text-3xl md:text-5xl font-bold mb-3 relative">
-        {["C", "o", "n", "t", "a", "c", "t", " ", "M", "e"].map((char, index) => (
-          <motion.span
-            key={index}
-            initial={{ opacity: 0, y: -30, rotateX: -90 }}
-            whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-            viewport={{ once: false }}
-            transition={{
-              type: "spring",
-              damping: 12,
-              stiffness: 100,
-              delay: index * 0.05,
-            }}
-            className={`inline-block ${
-              dark ? "text-white" : "text-gray-800"
-            }`}
-            style={{ 
-              textShadow: dark 
-                ? "0 0 20px #21D375" 
-                : "0 0 20px rgba(162, 202, 108, 0.5)" 
-            }}
-          >
-            {char}
-          </motion.span>
-        ))}
-        
-        {/* Anneau décoratif autour du titre */}
-        <motion.span
-          className="absolute -inset-4 rounded-full border-2 border-[#A2CA6C]/30"
-          initial={{ scale: 0, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
-          viewport={{ once: false }}
-          animate={{
-            scale: [1, 1.1, 1],
-            opacity: [0.3, 0.6, 0.3],
-          }}
-          transition={{
-            duration: 0.6,
-            repeat: Infinity,
-            delay: 0.5,
-          }}
-        />
-      </h2>
-
-      <motion.p
-        initial={{ opacity: 0, scale: 0.8 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: false }}
-        transition={{ delay: 0.4, duration: 0.5, type: "spring" }}
-        className={`text-center max-w-xl mx-auto text-sm md:text-base ${
-          dark ? "text-gray-300" : "text-gray-700"
-        }`}
-      >
-        Feel free to reach out if you want to work together or have a project in mind.
-      </motion.p>
-
-      {/* Ligne décorative avec effet de vague */}
-      <motion.div
-        className="relative h-0.5 bg-gradient-to-r from-transparent via-[#A2CA6C] to-transparent dark:via-[#21D375] mx-auto mt-4"
-        initial={{ width: 0 }}
-        whileInView={{ width: "120px" }}
-        viewport={{ once: false }}
-        transition={{ duration: 0.8, delay: 0.6 }}
-      >
-        <motion.div
-          className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 rounded-full bg-[#A2CA6C]"
-          animate={{
-            scale: [1, 1.5, 1],
-            opacity: [0.5, 1, 0.5],
-          }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-        />
-      </motion.div>
-    </motion.div>
-
-    {/* FORMULAIRE AVEC ANIMATIONS EN CASCADE */}
-    <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-5">
-      <div className="grid md:grid-cols-2 gap-4">
-        {/* Name */}
-        <motion.div
-          initial={{ opacity: 0, x: -80, rotateY: 45 }}
-          whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
-          viewport={{ once: false }}
-          transition={{ 
-            type: "spring", 
-            damping: 15, 
-            stiffness: 100, 
-            delay: 0.7 
-          }}
-          whileHover={{ scale: 1.02, x: 3 }}
-          className="relative group"
-        >
-          <label className={`block mb-1.5 text-xs font-medium ${
-            dark ? "text-gray-300" : "text-gray-700"
-          }`}>
-            Full Name
-          </label>
-          <input
-            type="text"
-            name="name"
-            placeholder="John Doe"
-            required
-            className={`w-full px-5 py-3 border rounded-xl transition-all duration-300 outline-none text-sm
-              ${dark 
-                ? "bg-white/10 border-white/20 text-white placeholder:text-gray-500 focus:border-[#21D375] focus:bg-white/20" 
-                : "bg-white/80 border-gray-300 text-gray-800 placeholder:text-gray-500 focus:border-[#A2CA6C] focus:shadow-lg focus:bg-white"
-              }
-            `}
-          />
-          <motion.div
-            className="absolute inset-0 rounded-xl pointer-events-none"
-            animate={{
-              boxShadow: [
-                "0 0 0px rgba(162, 202, 108, 0)",
-                "0 0 15px rgba(162, 202, 108, 0.4)",
-                "0 0 0px rgba(162, 202, 108, 0)",
-              ]
-            }}
-            transition={{ duration: 2, repeat: Infinity }}
-          />
-        </motion.div>
-
-        {/* Email */}
-        <motion.div
-          initial={{ opacity: 0, x: 80, rotateY: -45 }}
-          whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
-          viewport={{ once: false }}
-          transition={{ 
-            type: "spring", 
-            damping: 15, 
-            stiffness: 100, 
-            delay: 0.8 
-          }}
-          whileHover={{ scale: 1.02, x: -3 }}
-          className="relative group"
-        >
-          <label className={`block mb-1.5 text-xs font-medium ${
-            dark ? "text-gray-300" : "text-gray-700"
-          }`}>
-            Email Address
-          </label>
-          <input
-            type="email"
-            name="email"
-            placeholder="john@example.com"
-            required
-            className={`w-full px-5 py-3 border rounded-xl transition-all duration-300 outline-none text-sm
-              ${dark 
-                ? "bg-white/10 border-white/20 text-white placeholder:text-gray-500 focus:border-[#21D375] focus:bg-white/20" 
-                : "bg-white/80 border-gray-300 text-gray-800 placeholder:text-gray-500 focus:border-[#A2CA6C] focus:shadow-lg focus:bg-white"
-              }
-            `}
-          />
-          <motion.div
-            className="absolute inset-0 rounded-xl pointer-events-none"
-            animate={{
-              boxShadow: [
-                "0 0 0px rgba(162, 202, 108, 0)",
-                "0 0 15px rgba(162, 202, 108, 0.4)",
-                "0 0 0px rgba(162, 202, 108, 0)",
-              ]
-            }}
-            transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-          />
-        </motion.div>
-      </div>
-
-      {/* Subject */}
-      <motion.div
-        initial={{ opacity: 0, y: 50, scale: 0.9 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        viewport={{ once: false }}
-        transition={{ 
-          type: "spring", 
-          damping: 15, 
-          stiffness: 100, 
-          delay: 0.9 
-        }}
-        whileHover={{ scale: 1.01 }}
-        className="relative group"
-      >
-        <label className={`block mb-1.5 text-xs font-medium ${
-          dark ? "text-gray-300" : "text-gray-700"
-        }`}>
-          Subject
-        </label>
-        <input
-          type="text"
-          name="subject"
-          placeholder="Project Inquiry"
-          required
-          className={`w-full px-5 py-3 border rounded-xl transition-all duration-300 outline-none text-sm
-            ${dark 
-              ? "bg-white/10 border-white/20 text-white placeholder:text-gray-500 focus:border-[#21D375] focus:bg-white/20" 
-              : "bg-white/80 border-gray-300 text-gray-800 placeholder:text-gray-500 focus:border-[#A2CA6C] focus:shadow-lg focus:bg-white"
-            }
-          `}
-        />
-        <motion.div
-          className="absolute inset-0 rounded-xl pointer-events-none"
-          animate={{
-            boxShadow: [
-              "0 0 0px rgba(162, 202, 108, 0)",
-              "0 0 15px rgba(162, 202, 108, 0.4)",
-              "0 0 0px rgba(162, 202, 108, 0)",
-            ]
-          }}
-          transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-        />
-      </motion.div>
-
-      {/* Message */}
-      <motion.div
-        initial={{ opacity: 0, y: 50, scale: 0.9 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        viewport={{ once: false }}
-        transition={{ 
-          type: "spring", 
-          damping: 15, 
-          stiffness: 100, 
-          delay: 1.0 
-        }}
-        whileHover={{ scale: 1.01 }}
-        className="relative group"
-      >
-        <label className={`block mb-1.5 text-xs font-medium ${
-          dark ? "text-gray-300" : "text-gray-700"
-        }`}>
-          Your Message
-        </label>
-        <textarea
-          name="message"
-          placeholder="Tell me about your project..."
-          rows={3}
-          required
-          className={`w-full px-5 py-3 border rounded-xl transition-all duration-300 outline-none resize-none text-sm
-            ${dark 
-              ? "bg-white/10 border-white/20 text-white placeholder:text-gray-500 focus:border-[#21D375] focus:bg-white/20" 
-              : "bg-white/80 border-gray-300 text-gray-800 placeholder:text-gray-500 focus:border-[#A2CA6C] focus:shadow-lg focus:bg-white"
-            }
-          `}
-        />
-        <motion.div
-          className="absolute inset-0 rounded-xl pointer-events-none"
-          animate={{
-            boxShadow: [
-              "0 0 0px rgba(162, 202, 108, 0)",
-              "0 0 15px rgba(162, 202, 108, 0.4)",
-              "0 0 0px rgba(162, 202, 108, 0)",
-            ]
-          }}
-          transition={{ duration: 2, repeat: Infinity, delay: 1.2 }}
-        />
-      </motion.div>
-
-      {/* Bouton avec animation 3D */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0, rotate: -180 }}
-        whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-        viewport={{ once: false }}
-        transition={{ 
-          type: "spring", 
-          damping: 12, 
-          stiffness: 80, 
-          delay: 1.2 
-        }}
-        className="relative group mt-2 flex justify-center"
-      >
-        <motion.button
-          type="submit"
-          disabled={loading}
-          className={`px-10 py-3 font-semibold text-sm rounded-xl relative overflow-hidden transition-all duration-300
-            ${dark
-              ? "bg-white text-[#244539] hover:bg-gray-100"
-              : "bg-[#A2CA6C] text-white hover:bg-[#8BB55C]"
-            }
-          `}
-          whileHover={{ 
-            scale: 1.08,
+        <motion.section
+          id="contact"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: false, margin: "-100px" }}
+          className="w-full max-w-[800px] mt-32 mb-16 mx-auto rounded-[2rem] px-8 py-6 border backdrop-blur-sm relative overflow-hidden"
+          style={{
+            backgroundColor: dark ? '#244539' : '#A2CA6C',
+            borderColor: dark ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.1)',
             boxShadow: dark 
-              ? "0 0 30px rgba(33, 211, 117, 0.6)"
-              : "0 0 30px rgba(162, 202, 108, 0.6)"
-          }}
-          whileTap={{ scale: 0.95 }}
-          animate={{
-            y: [0, -2, 0],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            delay: 1.5,
+              ? '0 20px 50px rgba(0,0,0,0.7)' 
+              : '0 20px 40px rgba(0,0,0,0.12)'
           }}
         >
-          {/* Effet de brillance */}
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
-            animate={{
-              x: ["-100%", "200%"],
-            }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-          />
+          {/* ========== ANIMATIONS DE FOND PERMANENTES ========== */}
           
-          <span className="relative z-10 flex items-center gap-2">
-            {loading ? (
-              <>
+          {/* Effet de vagues lumineuses */}
+          <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="contactWave" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#A2CA6C" stopOpacity="0">
+                  <animate attributeName="stop-opacity" values="0;0.5;0" dur="3s" repeatCount="indefinite" />
+                </stop>
+                <stop offset="50%" stopColor="#A2CA6C" stopOpacity="0.3">
+                  <animate attributeName="stop-opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite" />
+                </stop>
+                <stop offset="100%" stopColor="#A2CA6C" stopOpacity="0">
+                  <animate attributeName="stop-opacity" values="0;0.5;0" dur="3s" repeatCount="indefinite" />
+                </stop>
+              </linearGradient>
+            </defs>
+            <motion.path
+              d="M0,100 Q150,50 300,100 T600,100 T900,80 T1200,100 T1500,90"
+              stroke="url(#contactWave)"
+              strokeWidth="2"
+              fill="none"
+              animate={{
+                d: [
+                  "M0,100 Q150,50 300,100 T600,100 T900,80 T1200,100 T1500,90",
+                  "M0,120 Q150,80 300,120 T600,110 T900,100 T1200,120 T1500,110",
+                  "M0,80 Q150,110 300,80 T600,90 T900,100 T1200,80 T1500,90",
+                  "M0,100 Q150,50 300,100 T600,100 T900,80 T1200,100 T1500,90",
+                ]
+              }}
+              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </svg>
+
+          {/* Cercles pulsants */}
+          {[...Array(3)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute rounded-full border border-[#A2CA6C]/30"
+              style={{
+                left: '50%',
+                top: '50%',
+                width: `${200 + i * 80}px`,
+                height: `${200 + i * 80}px`,
+                marginLeft: `-${100 + i * 40}px`,
+                marginTop: `-${100 + i * 40}px`,
+              }}
+              animate={{
+                scale: [1, 1.2, 1],
+                opacity: [0.1, 0.3, 0.1],
+              }}
+              transition={{
+                duration: 4 + i,
+                repeat: Infinity,
+                delay: i * 0.5,
+                ease: "easeInOut",
+              }}
+            />
+          ))}
+
+          {/* Particules flottantes */}
+          {Array.from({ length: 40 }).map((_, i) => (
+            <motion.div
+              key={`particle-${i}`}
+              className="absolute rounded-full"
+              style={{
+                width: Math.random() * 4 + 1 + 'px',
+                height: Math.random() * 4 + 1 + 'px',
+                background: i % 2 === 0 ? '#A2CA6C' : '#244539',
+                left: Math.random() * 100 + '%',
+                top: Math.random() * 100 + '%',
+                filter: 'blur(1px)',
+              }}
+              animate={{
+                y: [0, Math.random() * 80 - 40, 0],
+                x: [0, Math.random() * 60 - 30, 0],
+                opacity: [0, 0.6, 0],
+                scale: [0, 1.5, 0],
+              }}
+              transition={{
+                duration: 6 + Math.random() * 4,
+                repeat: Infinity,
+                delay: Math.random() * 5,
+                ease: "easeInOut",
+              }}
+            />
+          ))}
+
+          {/* Lignes lumineuses horizontales */}
+          {[...Array(4)].map((_, i) => (
+            <motion.div
+              key={`line-${i}`}
+              className="absolute h-px bg-gradient-to-r from-transparent via-[#A2CA6C] to-transparent"
+              style={{
+                top: `${15 + i * 25}%`,
+                left: 0,
+                right: 0,
+              }}
+              animate={{
+                x: ['-100%', '100%'],
+                opacity: [0, 0.5, 0],
+              }}
+              transition={{
+                duration: 5 + i,
+                repeat: Infinity,
+                delay: i * 0.8,
+                ease: "linear",
+              }}
+            />
+          ))}
+
+          <div className="relative z-10">
+            {/* TITRE AVEC ANIMATION SPECTACULAIRE */}
+            <motion.div
+              initial={{ opacity: 0, y: -50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, margin: "-50px" }}
+              transition={{ 
+                type: "spring", 
+                stiffness: 100, 
+                damping: 15,
+                duration: 0.8 
+              }}
+              className="text-center mb-8"
+            >
+              <h2 className="text-3xl md:text-5xl font-bold mb-3 relative">
+                {["C", "o", "n", "t", "a", "c", "t", " ", " M", "e"].map((char, index) => (
+                  <motion.span
+                    key={index}
+                    initial={{ opacity: 0, y: -30, rotateX: -90 }}
+                    whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                    viewport={{ once: false }}
+                    transition={{
+                      type: "spring",
+                      damping: 12,
+                      stiffness: 100,
+                      delay: index * 0.05,
+                    }}
+                    className={`inline-block ${
+                      dark ? "text-white" : "text-gray-800"
+                    }`}
+                    style={{ 
+                      textShadow: dark 
+                        ? "0 0 20px #21D375" 
+                        : "0 0 20px rgba(162, 202, 108, 0.5)" 
+                    }}
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+                
+                {/* Anneau décoratif autour du titre */}
                 <motion.span
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                  className={`w-3 h-3 border-2 ${dark ? 'border-[#244539]' : 'border-white'} border-t-transparent rounded-full`}
+                  className="absolute -inset-4 rounded-full border-2 border-[#A2CA6C]/30"
+                  initial={{ scale: 0, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  viewport={{ once: false }}
+                  animate={{
+                    scale: [1, 1.1, 1],
+                    opacity: [0.3, 0.6, 0.3],
+                  }}
+                  transition={{
+                    duration: 0.6,
+                    repeat: Infinity,
+                    delay: 0.5,
+                  }}
                 />
-                <span>Sending...</span>
-              </>
-            ) : (
-              <>
-                <span>Send Message</span>
-                <motion.span
-                  animate={{ x: [0, 6, 0] }}
-                  transition={{ duration: 1.2, repeat: Infinity }}
+              </h2>
+
+              <motion.p
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: false }}
+                transition={{ delay: 0.4, duration: 0.5, type: "spring" }}
+                className={`text-center max-w-xl mx-auto text-sm md:text-base ${
+                  dark ? "text-gray-300" : "text-gray-700"
+                }`}
+              >
+                Feel free to reach out if you want to work together or have a project in mind.
+              </motion.p>
+
+              {/* Ligne décorative avec effet de vague */}
+              <motion.div
+                className="relative h-0.5 bg-gradient-to-r from-transparent via-[#A2CA6C] to-transparent dark:via-[#21D375] mx-auto mt-4"
+                initial={{ width: 0 }}
+                whileInView={{ width: "120px" }}
+                viewport={{ once: false }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              >
+                <motion.div
+                  className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 rounded-full bg-[#A2CA6C]"
+                  animate={{
+                    scale: [1, 1.5, 1],
+                    opacity: [0.5, 1, 0.5],
+                  }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                />
+              </motion.div>
+            </motion.div>
+
+            {/* FORMULAIRE AVEC ANIMATIONS EN CASCADE */}
+            <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-5">
+              <div className="grid md:grid-cols-2 gap-4">
+                {/* Name */}
+                <motion.div
+                  initial={{ opacity: 0, x: -80, rotateY: 45 }}
+                  whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
+                  viewport={{ once: false }}
+                  transition={{ 
+                    type: "spring", 
+                    damping: 15, 
+                    stiffness: 100, 
+                    delay: 0.7 
+                  }}
+                  whileHover={{ scale: 1.02, x: 3 }}
+                  className="relative group"
                 >
-                  →
-                </motion.span>
-              </>
-            )}
-          </span>
-        </motion.button>
-      </motion.div>
-    </form>
+                  <label className={`block mb-1.5 text-xs font-medium ${
+                    dark ? "text-gray-300" : "text-gray-700"
+                  }`}>
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="John Doe"
+                    required
+                    className={`w-full px-5 py-3 border rounded-xl transition-all duration-300 outline-none text-sm
+                      ${dark 
+                        ? "bg-white/10 border-white/20 text-white placeholder:text-gray-500 focus:border-[#21D375] focus:bg-white/20" 
+                        : "bg-white/80 border-gray-300 text-gray-800 placeholder:text-gray-500 focus:border-[#A2CA6C] focus:shadow-lg focus:bg-white"
+                      }
+                    `}
+                  />
+                  <motion.div
+                    className="absolute inset-0 rounded-xl pointer-events-none"
+                    animate={{
+                      boxShadow: [
+                        "0 0 0px rgba(162, 202, 108, 0)",
+                        "0 0 15px rgba(162, 202, 108, 0.4)",
+                        "0 0 0px rgba(162, 202, 108, 0)",
+                      ]
+                    }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  />
+                </motion.div>
 
-    {/* Réseaux sociaux avec animation */}
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false }}
-      transition={{ delay: 1.4, duration: 0.6, type: "spring" }}
-      className="flex flex-col items-center gap-4 mt-8"
-    >
-      <motion.div 
-        className="flex gap-4"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: false }}
-        transition={{ delay: 1.6, staggerChildren: 0.1 }}
-      >
-        {[
-          { icon: Github, href: "https://github.com", label: "GitHub" },
-          { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-          { icon: Mail, href: "mailto:email@example.com", label: "Email" },
-        ].map((social, index) => (
-          <motion.a
-            key={index}
-            href={social.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`p-3 rounded-full transition-all duration-300 ${
-              dark 
-                ? "bg-white/10 hover:bg-white/20 text-white" 
-                : "bg-black/5 hover:bg-black/10 text-gray-700"
-            }`}
-            whileHover={{ 
-              scale: 1.15,
-              rotate: 5,
-              transition: { type: "spring", stiffness: 400 }
-            }}
-            whileTap={{ scale: 0.9 }}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
-            transition={{ delay: 1.6 + index * 0.1 }}
-          >
-            <social.icon size={20} />
-          </motion.a>
-        ))}
-      </motion.div>
-      
-      <motion.p 
-        className={`text-xs ${
-          dark ? "text-gray-400" : "text-gray-600"
-        }`}
-        animate={{
-          opacity: [0.5, 1, 0.5],
-        }}
-        transition={{ duration: 2, repeat: Infinity }}
-      >
-        ✨ I will reply to you as soon as possible ✨
-      </motion.p>
-    </motion.div>
-  </div>
+                {/* Email */}
+                <motion.div
+                  initial={{ opacity: 0, x: 80, rotateY: -45 }}
+                  whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
+                  viewport={{ once: false }}
+                  transition={{ 
+                    type: "spring", 
+                    damping: 15, 
+                    stiffness: 100, 
+                    delay: 0.8 
+                  }}
+                  whileHover={{ scale: 1.02, x: -3 }}
+                  className="relative group"
+                >
+                  <label className={`block mb-1.5 text-xs font-medium ${
+                    dark ? "text-gray-300" : "text-gray-700"
+                  }`}>
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="john@example.com"
+                    required
+                    className={`w-full px-5 py-3 border rounded-xl transition-all duration-300 outline-none text-sm
+                      ${dark 
+                        ? "bg-white/10 border-white/20 text-white placeholder:text-gray-500 focus:border-[#21D375] focus:bg-white/20" 
+                        : "bg-white/80 border-gray-300 text-gray-800 placeholder:text-gray-500 focus:border-[#A2CA6C] focus:shadow-lg focus:bg-white"
+                      }
+                    `}
+                  />
+                  <motion.div
+                    className="absolute inset-0 rounded-xl pointer-events-none"
+                    animate={{
+                      boxShadow: [
+                        "0 0 0px rgba(162, 202, 108, 0)",
+                        "0 0 15px rgba(162, 202, 108, 0.4)",
+                        "0 0 0px rgba(162, 202, 108, 0)",
+                      ]
+                    }}
+                    transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+                  />
+                </motion.div>
+              </div>
 
-  {/* Coin décoratifs animés */}
-  {[...Array(4)].map((_, i) => (
-    <motion.div
-      key={`corner-${i}`}
-      className="absolute w-8 h-8 border border-[#A2CA6C]/50"
-      style={{
-        top: i < 2 ? '20px' : 'auto',
-        bottom: i >= 2 ? '20px' : 'auto',
-        left: i % 2 === 0 ? '20px' : 'auto',
-        right: i % 2 === 1 ? '20px' : 'auto',
-        borderTopWidth: i < 2 ? '2px' : '0',
-        borderBottomWidth: i >= 2 ? '2px' : '0',
-        borderLeftWidth: i % 2 === 0 ? '2px' : '0',
-        borderRightWidth: i % 2 === 1 ? '2px' : '0',
-      }}
-      animate={{
-        scale: [1, 1.1, 1],
-        opacity: [0.3, 0.8, 0.3],
-      }}
-      transition={{
-        duration: 2,
-        repeat: Infinity,
-        delay: i * 0.3,
-      }}
-    />
-  ))}
-</motion.section>
+              {/* Subject */}
+              <motion.div
+                initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: false }}
+                transition={{ 
+                  type: "spring", 
+                  damping: 15, 
+                  stiffness: 100, 
+                  delay: 0.9 
+                }}
+                whileHover={{ scale: 1.01 }}
+                className="relative group"
+              >
+                <label className={`block mb-1.5 text-xs font-medium ${
+                  dark ? "text-gray-300" : "text-gray-700"
+                }`}>
+                  Subject
+                </label>
+                <input
+                  type="text"
+                  name="subject"
+                  placeholder="Project Inquiry"
+                  required
+                  className={`w-full px-5 py-3 border rounded-xl transition-all duration-300 outline-none text-sm
+                    ${dark 
+                      ? "bg-white/10 border-white/20 text-white placeholder:text-gray-500 focus:border-[#21D375] focus:bg-white/20" 
+                      : "bg-white/80 border-gray-300 text-gray-800 placeholder:text-gray-500 focus:border-[#A2CA6C] focus:shadow-lg focus:bg-white"
+                    }
+                  `}
+                />
+                <motion.div
+                  className="absolute inset-0 rounded-xl pointer-events-none"
+                  animate={{
+                    boxShadow: [
+                      "0 0 0px rgba(162, 202, 108, 0)",
+                      "0 0 15px rgba(162, 202, 108, 0.4)",
+                      "0 0 0px rgba(162, 202, 108, 0)",
+                    ]
+                  }}
+                  transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+                />
+              </motion.div>
+
+              {/* Message */}
+              <motion.div
+                initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: false }}
+                transition={{ 
+                  type: "spring", 
+                  damping: 15, 
+                  stiffness: 100, 
+                  delay: 1.0 
+                }}
+                whileHover={{ scale: 1.01 }}
+                className="relative group"
+              >
+                <label className={`block mb-1.5 text-xs font-medium ${
+                  dark ? "text-gray-300" : "text-gray-700"
+                }`}>
+                  Your Message
+                </label>
+                <textarea
+                  name="message"
+                  placeholder="Tell me about your project..."
+                  rows={3}
+                  required
+                  className={`w-full px-5 py-3 border rounded-xl transition-all duration-300 outline-none resize-none text-sm
+                    ${dark 
+                      ? "bg-white/10 border-white/20 text-white placeholder:text-gray-500 focus:border-[#21D375] focus:bg-white/20" 
+                      : "bg-white/80 border-gray-300 text-gray-800 placeholder:text-gray-500 focus:border-[#A2CA6C] focus:shadow-lg focus:bg-white"
+                    }
+                  `}
+                />
+                <motion.div
+                  className="absolute inset-0 rounded-xl pointer-events-none"
+                  animate={{
+                    boxShadow: [
+                      "0 0 0px rgba(162, 202, 108, 0)",
+                      "0 0 15px rgba(162, 202, 108, 0.4)",
+                      "0 0 0px rgba(162, 202, 108, 0)",
+                    ]
+                  }}
+                  transition={{ duration: 2, repeat: Infinity, delay: 1.2 }}
+                />
+              </motion.div>
+
+              {/* Bouton avec animation 3D */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0, rotate: -180 }}
+                whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                viewport={{ once: false }}
+                transition={{ 
+                  type: "spring", 
+                  damping: 12, 
+                  stiffness: 80, 
+                  delay: 1.2 
+                }}
+                className="relative group mt-2 flex justify-center"
+              >
+                <motion.button
+                  type="submit"
+                  disabled={loading}
+                  className={`px-10 py-3 font-semibold text-sm rounded-xl relative overflow-hidden transition-all duration-300
+                    ${dark
+                      ? "bg-white text-[#244539] hover:bg-gray-100"
+                      : "bg-[#A2CA6C] text-white hover:bg-[#8BB55C]"
+                    }
+                  `}
+                  whileHover={{ 
+                    scale: 1.08,
+                    boxShadow: dark 
+                      ? "0 0 30px rgba(33, 211, 117, 0.6)"
+                      : "0 0 30px rgba(162, 202, 108, 0.6)"
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  animate={{
+                    y: [0, -2, 0],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    delay: 1.5,
+                  }}
+                >
+                  {/* Effet de brillance */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
+                    animate={{
+                      x: ["-100%", "200%"],
+                    }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                      ease: "linear"
+                    }}
+                  />
+                  
+                  <span className="relative z-10 flex items-center gap-2">
+                    {loading ? (
+                      <>
+                        <motion.span
+                          animate={{ rotate: 360 }}
+                          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                          className={`w-3 h-3 border-2 ${dark ? 'border-[#244539]' : 'border-white'} border-t-transparent rounded-full`}
+                        />
+                        <span>Sending...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Send Message</span>
+                        <motion.span
+                          animate={{ x: [0, 6, 0] }}
+                          transition={{ duration: 1.2, repeat: Infinity }}
+                        >
+                          →
+                        </motion.span>
+                      </>
+                    )}
+                  </span>
+                </motion.button>
+              </motion.div>
+            </form>
+
+            {/* Réseaux sociaux avec animation */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false }}
+              transition={{ delay: 1.4, duration: 0.6, type: "spring" }}
+              className="flex flex-col items-center gap-4 mt-8"
+            >
+              <motion.div 
+                className="flex gap-4"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: false }}
+                transition={{ delay: 1.6, staggerChildren: 0.1 }}
+              >
+                {[
+                  { icon: Github, href: "https://github.com", label: "GitHub" },
+                  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+                  { icon: Mail, href: "mailto:email@example.com", label: "Email" },
+                ].map((social, index) => (
+                  <motion.a
+                    key={index}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`p-3 rounded-full transition-all duration-300 ${
+                      dark 
+                        ? "bg-white/10 hover:bg-white/20 text-white" 
+                        : "bg-black/5 hover:bg-black/10 text-gray-700"
+                    }`}
+                    whileHover={{ 
+                      scale: 1.15,
+                      rotate: 5,
+                      transition: { type: "spring", stiffness: 400 }
+                    }}
+                    whileTap={{ scale: 0.9 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false }}
+                    transition={{ delay: 1.6 + index * 0.1 }}
+                  >
+                    <social.icon size={20} />
+                  </motion.a>
+                ))}
+              </motion.div>
+              
+              <motion.p 
+                className={`text-xs ${
+                  dark ? "text-gray-400" : "text-gray-600"
+                }`}
+                animate={{
+                  opacity: [0.5, 1, 0.5],
+                }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                ✨ I will reply to you as soon as possible ✨
+              </motion.p>
+            </motion.div>
+          </div>
+
+          {/* Coin décoratifs animés */}
+          {[...Array(4)].map((_, i) => (
+            <motion.div
+              key={`corner-${i}`}
+              className="absolute w-8 h-8 border border-[#A2CA6C]/50"
+              style={{
+                top: i < 2 ? '20px' : 'auto',
+                bottom: i >= 2 ? '20px' : 'auto',
+                left: i % 2 === 0 ? '20px' : 'auto',
+                right: i % 2 === 1 ? '20px' : 'auto',
+                borderTopWidth: i < 2 ? '2px' : '0',
+                borderBottomWidth: i >= 2 ? '2px' : '0',
+                borderLeftWidth: i % 2 === 0 ? '2px' : '0',
+                borderRightWidth: i % 2 === 1 ? '2px' : '0',
+              }}
+              animate={{
+                scale: [1, 1.1, 1],
+                opacity: [0.3, 0.8, 0.3],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                delay: i * 0.3,
+              }}
+            />
+          ))}
+        </motion.section>
       </div>
     </main>
   );
