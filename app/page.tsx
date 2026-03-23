@@ -1651,7 +1651,7 @@ export default function Home() {
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-emerald-400"> Expertise</span>
               </h2>
               <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                Un mélange unique de design thinking et de développement technique pour des projets d'exception.
+                A unique blend of design thinking and technical development for exceptional projects.
               </p>
               
               {/* Barre de séparation décorative */}
