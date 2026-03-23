@@ -22,6 +22,18 @@ import {
   IconDatabase, IconCode, IconFileCode, IconBrandGit,
   IconBrandAndroid,
 } from '@tabler/icons-react';
+
+import { 
+  Zap, 
+  Star, 
+  Code2, 
+  Rocket,
+  Gauge,
+  Users,
+  Award,
+  Clock
+} from 'lucide-react';
+
 import { 
   FileCode2, Code, Database, Terminal, Layout, 
   SquareTerminal 
