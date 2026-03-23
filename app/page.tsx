@@ -26,13 +26,10 @@ import {
 import { 
   Zap, 
   Star, 
-  Code2, 
-  Rocket,
   Gauge,
   Users,
   Award,
   Clock,
-  Award,
   ThumbsUp,
   HeartHandshake,
   Target,
