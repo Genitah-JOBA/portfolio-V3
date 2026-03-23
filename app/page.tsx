@@ -773,327 +773,330 @@ export default function Home() {
         </div>
 
         {/* SECTION ABOUT - DESIGN MINIMALISTE & CINÉMATIQUE */}
-<section id="about" className="py-20 px-6 overflow-hidden relative">
-  {/* Nouveau fond : vagues organiques subtiles */}
-  <div className="absolute inset-0 overflow-hidden pointer-events-none">
-    {/* Dégradé de fond dynamique */}
-    <div className="absolute inset-0 bg-gradient-to-br from-[#A2CA6C]/5 via-transparent to-[#244539]/5" />
-    
-    {/* Vagues animées style "glassmorphism" */}
-    <svg className="absolute bottom-0 left-0 w-full h-full opacity-20" preserveAspectRatio="none" viewBox="0 0 1440 800">
-      <defs>
-        <linearGradient id="waveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#A2CA6C" stopOpacity="0.4" />
-          <stop offset="100%" stopColor="#244539" stopOpacity="0.1" />
-        </linearGradient>
-      </defs>
-      <motion.path
-        fill="url(#waveGradient)"
-        d="M0,320L48,341.3C96,363,192,405,288,405.3C384,405,480,363,576,336C672,309,768,299,864,314.7C960,331,1056,373,1152,384C1248,395,1344,373,1392,362.7L1440,352L1440,800L1392,800C1344,800,1248,800,1152,800C1056,800,960,800,864,800C768,800,672,800,576,800C480,800,384,800,288,800C192,800,96,800,48,800L0,800Z"
-        animate={{
-          d: [
-            "M0,320L48,341.3C96,363,192,405,288,405.3C384,405,480,363,576,336C672,309,768,299,864,314.7C960,331,1056,373,1152,384C1248,395,1344,373,1392,362.7L1440,352L1440,800L1392,800C1344,800,1248,800,1152,800C1056,800,960,800,864,800C768,800,672,800,576,800C480,800,384,800,288,800C192,800,96,800,48,800L0,800Z",
-            "M0,288L48,298.7C96,309,192,331,288,330.7C384,331,480,309,576,288C672,267,768,245,864,256C960,267,1056,309,1152,330.7C1248,352,1344,352,1392,352L1440,352L1440,800L1392,800C1344,800,1248,800,1152,800C1056,800,960,800,864,800C768,800,672,800,576,800C480,800,384,800,288,800C192,800,96,800,48,800L0,800Z",
-            "M0,352L48,341.3C96,331,192,309,288,314.7C384,320,480,352,576,368C672,384,768,384,864,368C960,352,1056,320,1152,320C1248,320,1344,352,1392,368L1440,384L1440,800L1392,800C1344,800,1248,800,1152,800C1056,800,960,800,864,800C768,800,672,800,576,800C480,800,384,800,288,800C192,800,96,800,48,800L0,800Z"
-          ]
-        }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          ease: "easeInOut",
-          repeatType: "reverse"
-        }}
-      />
-    </svg>
+        <section id="about" className="py-20 px-6 overflow-hidden relative">
+          {/* Nouveau fond : vagues organiques subtiles */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {/* Dégradé de fond dynamique */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#A2CA6C]/5 via-transparent to-[#244539]/5" />
+            
+            {/* Vagues animées style "glassmorphism" */}
+            <svg className="absolute bottom-0 left-0 w-full h-full opacity-20" preserveAspectRatio="none" viewBox="0 0 1440 800">
+              <defs>
+                <linearGradient id="waveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="#A2CA6C" stopOpacity="0.4" />
+                  <stop offset="100%" stopColor="#244539" stopOpacity="0.1" />
+                </linearGradient>
+              </defs>
+              <motion.path
+                fill="url(#waveGradient)"
+                d="M0,320L48,341.3C96,363,192,405,288,405.3C384,405,480,363,576,336C672,309,768,299,864,314.7C960,331,1056,373,1152,384C1248,395,1344,373,1392,362.7L1440,352L1440,800L1392,800C1344,800,1248,800,1152,800C1056,800,960,800,864,800C768,800,672,800,576,800C480,800,384,800,288,800C192,800,96,800,48,800L0,800Z"
+                animate={{
+                  d: [
+                    "M0,320L48,341.3C96,363,192,405,288,405.3C384,405,480,363,576,336C672,309,768,299,864,314.7C960,331,1056,373,1152,384C1248,395,1344,373,1392,362.7L1440,352L1440,800L1392,800C1344,800,1248,800,1152,800C1056,800,960,800,864,800C768,800,672,800,576,800C480,800,384,800,288,800C192,800,96,800,48,800L0,800Z",
+                    "M0,288L48,298.7C96,309,192,331,288,330.7C384,331,480,309,576,288C672,267,768,245,864,256C960,267,1056,309,1152,330.7C1248,352,1344,352,1392,352L1440,352L1440,800L1392,800C1344,800,1248,800,1152,800C1056,800,960,800,864,800C768,800,672,800,576,800C480,800,384,800,288,800C192,800,96,800,48,800L0,800Z",
+                    "M0,352L48,341.3C96,331,192,309,288,314.7C384,320,480,352,576,368C672,384,768,384,864,368C960,352,1056,320,1152,320C1248,320,1344,352,1392,368L1440,384L1440,800L1392,800C1344,800,1248,800,1152,800C1056,800,960,800,864,800C768,800,672,800,576,800C480,800,384,800,288,800C192,800,96,800,48,800L0,800Z"
+                  ]
+                }}
+                transition={{
+                  duration: 15,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  repeatType: "reverse"
+                }}
+              />
+            </svg>
 
-    {/* Effet de particules flottantes style "space" */}
-    {Array.from({ length: 30 }).map((_, i) => (
-      <motion.div
-        key={i}
-        className="absolute rounded-full"
-        style={{
-          width: Math.random() * 3 + 1 + 'px',
-          height: Math.random() * 3 + 1 + 'px',
-          background: i % 2 === 0 ? '#A2CA6C' : '#244539',
-          left: Math.random() * 100 + '%',
-          top: Math.random() * 100 + '%',
-          filter: 'blur(1px)',
-        }}
-        animate={{
-          y: [0, Math.random() * 100 - 50, 0],
-          x: [0, Math.random() * 80 - 40, 0],
-          opacity: [0, 0.5, 0],
-        }}
-        transition={{
-          duration: 8 + Math.random() * 6,
-          repeat: Infinity,
-          delay: Math.random() * 5,
-          ease: "easeInOut",
-        }}
-      />
-    ))}
-  </div>
-
-  <div className="max-w-6xl mx-auto relative z-10">
-    {/* NOUVEAU TITRE : Style "ascii art" animé */}
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      className="text-center mb-20"
-    >
-      <motion.div
-        initial={{ scale: 0.9, opacity: 0 }}
-        whileInView={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
-        className="inline-block"
-      >
-        <div className="relative">
-          {/* Badge décoratif */}
-          <motion.div
-            className="absolute -top-6 -right-6 w-12 h-12 rounded-full bg-[#A2CA6C]/20 blur-xl"
-            animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.3, 0.6, 0.3],
-            }}
-            transition={{ duration: 3, repeat: Infinity }}
-          />
-          
-          {/* Titre principal avec effet de découpage */}
-          <h2 className="text-6xl md:text-8xl font-black tracking-tighter">
-            <span className="relative">
-              <span className="absolute inset-0 text-[#A2CA6C] blur-sm opacity-50">
-                01.
-              </span>
-              <span className="relative bg-gradient-to-r from-[#A2CA6C] via-[#21D375] to-[#244539] bg-clip-text text-transparent">
-                01.
-              </span>
-            </span>
-            <br />
-            <span className="text-gray-900 dark:text-white">Who Am I</span>
-          </h2>
-          
-          {/* Ligne décorative asymétrique */}
-          <motion.div
-            className="absolute -bottom-4 left-1/4 w-32 h-0.5 bg-gradient-to-r from-[#A2CA6C] to-transparent"
-            initial={{ width: 0 }}
-            whileInView={{ width: '8rem' }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          />
-        </div>
-      </motion.div>
-      
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.5 }}
-        className="text-gray-500 dark:text-gray-400 text-sm uppercase tracking-[0.3em] mt-8"
-      >
-        {">_"}+ Passion for innovation
-      </motion.p>
-    </motion.div>
-
-    <div className="grid lg:grid-cols-2 gap-16 items-start">
-      {/* NOUVEAU TEXTE : Style terminal */}
-      <motion.div
-        initial={{ opacity: 0, x: -50 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7, delay: 0.2 }}
-        className="relative"
-      >
-        {/* Cadre style terminal */}
-        <div className="relative bg-black/5 dark:bg-white/5 rounded-2xl p-6 backdrop-blur-sm border border-[#A2CA6C]/20">
-          {/* Dots style terminal */}
-          <div className="flex gap-2 mb-4">
-            <div className="w-3 h-3 rounded-full bg-red-500/50" />
-            <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
-            <div className="w-3 h-3 rounded-full bg-green-500/50" />
-          </div>
-          
-          <div className="space-y-4 font-mono text-sm">
-            <motion.p
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.4 }}
-              className="text-gray-700 dark:text-gray-300 leading-relaxed"
-            >
-              <span className="text-[#A2CA6C]">$</span> whoami
-              <br />
-              <span className="text-gray-600 dark:text-gray-400">
-                * Fullstack Developer passionate about creating impactful digital experiences.
-              </span>
-            </motion.p>
-
-            <motion.p
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.6 }}
-              className="text-gray-700 dark:text-gray-300 leading-relaxed"
-            >
-              <span className="text-[#A2CA6C]">$</span> skills --tech-stack
-              <br />
-              <span className="text-gray-600 dark:text-gray-400">
-                * React, Next.js, Node.js, Python, PHP, Laravel, Java, C#
-              </span>
-            </motion.p>
-
-            <motion.p
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.8 }}
-              className="text-gray-700 dark:text-gray-300 leading-relaxed"
-            >
-              <span className="text-[#A2CA6C]">$</span> philosophy --principles
-              <br />
-              <span className="text-gray-600 dark:text-gray-400">
-                * Clean code, performance, user experience, scalability
-              </span>
-            </motion.p>
-
-            {/* Curseur clignotant */}
-            <motion.span
-              className="inline-block w-2 h-4 bg-[#A2CA6C]"
-              animate={{ opacity: [1, 0, 1] }}
-              transition={{ duration: 1, repeat: Infinity }}
-            />
-          </div>
-        </div>
-
-        {/* Badge de stats flottant */}
-        <motion.div
-          className="absolute -bottom-4 -right-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-3 border border-[#A2CA6C]/30"
-          initial={{ opacity: 0, scale: 0 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          animate={{
-            y: [0, -5, 0],
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            delay: 1.5,
-            type: "spring"
-          }}
-        >
-          <div className="text-center">
-            <div className="text-2xl font-bold text-[#A2CA6C]">10+</div>
-            <div className="text-xs text-gray-500">Projects Completed</div>
-          </div>
-        </motion.div>
-      </motion.div>
-
-      {/* NOUVEAUX BLOCS : Style cartes "glassmorphism" avec métriques */}
-      <motion.div 
-        className="space-y-6"
-        initial={{ opacity: 0, x: 50 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7, delay: 0.3 }}
-      >
-        {/* Métrique 1 - XP */}
-        <motion.div
-          whileHover={{ scale: 1.02, x: 5 }}
-          className="group relative bg-gradient-to-r from-white/10 to-transparent backdrop-blur-sm rounded-2xl p-6 border border-white/20 dark:border-white/10 overflow-hidden"
-        >
-          <div className="absolute inset-0 bg-gradient-to-r from-[#A2CA6C]/0 to-[#A2CA6C]/5 group-hover:opacity-100 transition-opacity" />
-          <div className="relative flex justify-between items-start">
-            <div>
-              <p className="text-sm uppercase tracking-wider text-[#A2CA6C] font-semibold">Experience</p>
-              <h3 className="text-3xl font-bold mt-2 text-gray-900 dark:text-white">3+ Years</h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Fullstack Development</p>
-            </div>
-            <div className="text-4xl opacity-20 group-hover:opacity-40 transition-opacity">💻</div>
-          </div>
-        </motion.div>
-
-        {/* Métrique 2 - Impact */}
-        <motion.div
-          whileHover={{ scale: 1.02, x: 5 }}
-          className="group relative bg-gradient-to-r from-white/10 to-transparent backdrop-blur-sm rounded-2xl p-6 border border-white/20 dark:border-white/10"
-        >
-          <div className="relative flex justify-between items-start">
-            <div>
-              <p className="text-sm uppercase tracking-wider text-[#A2CA6C] font-semibold">Impact</p>
-              <h3 className="text-3xl font-bold mt-2 text-gray-900 dark:text-white">100%</h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Client Satisfaction</p>
-            </div>
-            <div className="text-4xl opacity-20 group-hover:opacity-40 transition-opacity">⭐</div>
-          </div>
-          {/* Barre de progression */}
-          <div className="mt-4 h-1 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-            <motion.div
-              className="h-full bg-gradient-to-r from-[#A2CA6C] to-[#244539]"
-              initial={{ width: 0 }}
-              whileInView={{ width: '100%' }}
-              transition={{ duration: 1.5, delay: 0.8 }}
-            />
-          </div>
-        </motion.div>
-
-        {/* Métrique 3 - Speed */}
-        <motion.div
-          whileHover={{ scale: 1.02, x: 5 }}
-          className="group relative bg-gradient-to-r from-white/10 to-transparent backdrop-blur-sm rounded-2xl p-6 border border-white/20 dark:border-white/10"
-        >
-          <div className="relative flex justify-between items-start">
-            <div>
-              <p className="text-sm uppercase tracking-wider text-[#A2CA6C] font-semibold">Performance</p>
-              <h3 className="text-3xl font-bold mt-2 text-gray-900 dark:text-white">90+</h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Lighthouse Score</p>
-            </div>
-            <div className="text-4xl opacity-20 group-hover:opacity-40 transition-opacity">⚡</div>
-          </div>
-          <div className="flex gap-1 mt-4">
-            {[1, 2, 3, 4, 5].map((i) => (
+            {/* Effet de particules flottantes style "space" */}
+            {Array.from({ length: 30 }).map((_, i) => (
               <motion.div
                 key={i}
-                className="h-1 flex-1 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden"
-                initial={{ width: 0 }}
-                whileInView={{ width: '100%' }}
-                transition={{ delay: 1 + i * 0.1 }}
-              >
-                <div className="h-full bg-[#A2CA6C]" style={{ width: i === 5 ? '100%' : `${i * 20}%` }} />
-              </motion.div>
+                className="absolute rounded-full"
+                style={{
+                  width: Math.random() * 3 + 1 + 'px',
+                  height: Math.random() * 3 + 1 + 'px',
+                  background: i % 2 === 0 ? '#A2CA6C' : '#244539',
+                  left: Math.random() * 100 + '%',
+                  top: Math.random() * 100 + '%',
+                  filter: 'blur(1px)',
+                }}
+                animate={{
+                  y: [0, Math.random() * 100 - 50, 0],
+                  x: [0, Math.random() * 80 - 40, 0],
+                  opacity: [0, 0.5, 0],
+                }}
+                transition={{
+                  duration: 8 + Math.random() * 6,
+                  repeat: Infinity,
+                  delay: Math.random() * 5,
+                  ease: "easeInOut",
+                }}
+              />
             ))}
           </div>
-        </motion.div>
-      </motion.div>
-    </div>
-    
-    {/* NOUVEAU BOUTON : Style "explore" */}
-    <motion.div
-      className="text-center mt-16"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: 0.8 }}
-    >
-      <motion.a
-        href="#contact"
-        className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full overflow-hidden"
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
-      >
-        {/* Background animé */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#A2CA6C] to-[#244539] opacity-90 group-hover:opacity-100 transition-opacity" />
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/30 to-white/0"
-          animate={{ x: ['-100%', '200%'] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-        />
-        
-        <span className="relative z-10 text-white font-semibold">Start a project</span>
-        <motion.span
-          className="relative z-10 text-white"
-          animate={{ x: [0, 5, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-        >
-          →
-        </motion.span>
-      </motion.a>
-    </motion.div>
-  </div>
-</section>
+
+          <div className="max-w-6xl mx-auto relative z-10">
+            {/* NOUVEAU TITRE : Style "ascii art" animé */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="text-center mb-20"
+            >
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
+                className="inline-block"
+              >
+                <div className="relative">
+                  {/* Badge décoratif */}
+                  <motion.div
+                    className="absolute -top-6 -right-6 w-12 h-12 rounded-full bg-[#A2CA6C]/20 blur-xl"
+                    animate={{
+                      scale: [1, 1.2, 1],
+                      opacity: [0.3, 0.6, 0.3],
+                    }}
+                    transition={{ duration: 3, repeat: Infinity }}
+                  />
+                  
+                  {/* Titre principal avec effet de découpage */}
+                  <h2 className="text-6xl md:text-8xl font-black tracking-tighter">
+                    <span className="relative">
+                      <span className="absolute inset-0 text-[#A2CA6C] blur-sm opacity-50">
+                        01.
+                      </span>
+                      <span className="relative bg-gradient-to-r from-[#A2CA6C] via-[#21D375] to-[#244539] bg-clip-text text-transparent">
+                        01.
+                      </span>
+                    </span>
+                    <br />
+                    <span className="text-gray-900 dark:text-white">Who Am I</span>
+                  </h2>
+                  
+                  {/* Ligne décorative asymétrique */}
+                  <motion.div
+                    className="absolute -bottom-4 left-1/4 w-32 h-0.5 bg-gradient-to-r from-[#A2CA6C] to-transparent"
+                    initial={{ width: 0 }}
+                    whileInView={{ width: '8rem' }}
+                    transition={{ duration: 0.8, delay: 0.3 }}
+                  />
+                </div>
+              </motion.div>
+              
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className="text-gray-500 dark:text-gray-400 text-sm uppercase tracking-[0.3em] mt-8"
+              >
+                {">_"}+ Passion for innovation
+              </motion.p>
+            </motion.div>
+
+            <div className="grid lg:grid-cols-2 gap-16 items-start">
+              {/* NOUVEAU TEXTE : Style terminal */}
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+                className="relative"
+              >
+                {/* Cadre style terminal */}
+                <div className="relative bg-black/5 dark:bg-white/5 rounded-2xl p-6 backdrop-blur-sm border border-[#A2CA6C]/20">
+                  {/* Dots style terminal */}
+                  <div className="flex gap-2 mb-4">
+                    <div className="w-3 h-3 rounded-full bg-red-500/50" />
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
+                    <div className="w-3 h-3 rounded-full bg-green-500/50" />
+                  </div>
+                  
+                  <div className="space-y-4 font-mono text-sm">
+                    <motion.p
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.4 }}
+                      className="text-gray-700 dark:text-gray-300 leading-relaxed"
+                    >
+                      <span className="text-[#A2CA6C]">$</span> whoami
+                      <br />
+                      <span className="text-gray-600 dark:text-gray-400">
+                        * Fullstack Developer passionate about creating impactful digital experiences.
+                      </span>
+                    </motion.p>
+
+                    <motion.p
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.6 }}
+                      className="text-gray-700 dark:text-gray-300 leading-relaxed"
+                    >
+                      <span className="text-[#A2CA6C]">$</span> skills --tech-stack
+                      <br />
+                      <span className="text-gray-600 dark:text-gray-400">
+                        * React, Next.js, Node.js, Python, PHP, Laravel, Java, C#
+                      </span>
+                    </motion.p>
+
+                    <motion.p
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.8 }}
+                      className="text-gray-700 dark:text-gray-300 leading-relaxed"
+                    >
+                      <span className="text-[#A2CA6C]">$</span> philosophy --principles
+                      <br />
+                      <span className="text-gray-600 dark:text-gray-400">
+                        * Clean code, performance, user experience, scalability
+                      </span>
+                    </motion.p>
+
+                    {/* Curseur clignotant */}
+                    <motion.span
+                      className="inline-block w-2 h-4 bg-[#A2CA6C]"
+                      animate={{ opacity: [1, 0, 1] }}
+                      transition={{ duration: 1, repeat: Infinity }}
+                    />
+                  </div>
+                </div>
+
+                {/* Badge de stats flottant */}
+                <motion.div
+                  className="absolute -bottom-4 -right-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-3 border border-[#A2CA6C]/30"
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  animate={{
+                    y: [0, -5, 0],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    delay: 1.5,
+                    type: "spring"
+                  }}
+                >
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-[#A2CA6C]">10+</div>
+                    <div className="text-xs text-gray-500">Projects Completed</div>
+                  </div>
+                </motion.div>
+              </motion.div>
+
+              {/* NOUVEAUX BLOCS : Style cartes "glassmorphism" avec métriques */}
+              <motion.div 
+                className="space-y-6"
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.3 }}
+              >
+                {/* Métrique 1 - XP */}
+                <motion.div
+                  whileHover={{ scale: 1.02, x: 5 }}
+                  className="group relative bg-gradient-to-r from-white/10 to-transparent backdrop-blur-sm rounded-2xl p-6 border border-white/20 dark:border-white/10 overflow-hidden"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#A2CA6C]/0 to-[#A2CA6C]/5 group-hover:opacity-100 transition-opacity" />
+                  <div className="relative flex justify-between items-start">
+                    <div>
+                      <p className="text-sm uppercase tracking-wider text-[#A2CA6C] font-semibold">Experience</p>
+                      <h3 className="text-3xl font-bold mt-2 text-gray-900 dark:text-white">3+ Years</h3>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Fullstack Development</p>
+                    </div>
+                    <div className="text-4xl opacity-20 group-hover:opacity-40 transition-opacity">💻</div>
+                  </div>
+                </motion.div>
+
+                {/* Métrique 2 - Impact */}
+                <motion.div
+                  whileHover={{ scale: 1.02, x: 5 }}
+                  className="group relative bg-gradient-to-r from-white/10 to-transparent backdrop-blur-sm rounded-2xl p-6 border border-white/20 dark:border-white/10"
+                >
+                  <div className="relative flex justify-between items-start">
+                    <div>
+                      <p className="text-sm uppercase tracking-wider text-[#A2CA6C] font-semibold">Impact</p>
+                      <h3 className="text-3xl font-bold mt-2 text-gray-900 dark:text-white">100%</h3>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Client Satisfaction</p>
+                    </div>
+                    <div className="text-4xl opacity-20 group-hover:opacity-40 transition-opacity">⭐</div>
+                  </div>
+                  {/* Barre de progression */}
+                  <div className="mt-4 h-1 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                    <motion.div
+                      className="h-full bg-gradient-to-r from-[#A2CA6C] to-[#244539]"
+                      initial={{ width: 0 }}
+                      whileInView={{ width: '100%' }}
+                      transition={{ duration: 1.5, delay: 0.8 }}
+                    />
+                  </div>
+                </motion.div>
+
+                {/* Métrique 3 - Speed */}
+                <motion.div
+                  whileHover={{ scale: 1.02, x: 5 }}
+                  className="group relative bg-gradient-to-r from-white/10 to-transparent backdrop-blur-sm rounded-2xl p-6 border border-white/20 dark:border-white/10 overflow-hidden"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#A2CA6C]/0 to-[#A2CA6C]/5 group-hover:opacity-100 transition-opacity" />
+                  <div className="relative flex justify-between items-start">
+                    <div>
+                      <p className="text-sm uppercase tracking-wider text-[#A2CA6C] font-semibold">Experience</p>
+                      <h3 className="text-3xl font-bold mt-2 text-gray-900 dark:text-white">3+ Years</h3>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Fullstack Development</p>
+                    </div>
+                    <div className="p-2 rounded-xl bg-[#A2CA6C]/10 group-hover:bg-[#A2CA6C]/20 transition-all duration-300">
+                      <Code2 size={28} className="text-[#A2CA6C]" />
+                    </div>
+                  </div>
+                  <div className="flex gap-1 mt-4">
+                    {[1, 2, 3, 4, 5].map((i) => (
+                      <motion.div
+                        key={i}
+                        className="h-1 flex-1 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden"
+                        initial={{ width: 0 }}
+                        whileInView={{ width: '100%' }}
+                        transition={{ delay: 1 + i * 0.1 }}
+                      >
+                        <div className="h-full bg-[#A2CA6C]" style={{ width: i === 5 ? '100%' : `${i * 20}%` }} />
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              </motion.div>
+            </div>
+            
+            {/* NOUVEAU BOUTON : Style "explore" */}
+            <motion.div
+              className="text-center mt-16"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+            >
+              <motion.a
+                href="#contact"
+                className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full overflow-hidden"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                {/* Background animé */}
+                <div className="absolute inset-0 bg-gradient-to-r from-[#A2CA6C] to-[#244539] opacity-90 group-hover:opacity-100 transition-opacity" />
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/30 to-white/0"
+                  animate={{ x: ['-100%', '200%'] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                />
+                
+                <span className="relative z-10 text-white font-semibold">Start a project</span>
+                <motion.span
+                  className="relative z-10 text-white"
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  →
+                </motion.span>
+              </motion.a>
+            </motion.div>
+          </div>
+        </section>
 
         {/* SECTION SKILLS */}
         <div className="relative flex items-center justify-center my-6 md:my-8 px-6">
