@@ -322,7 +322,7 @@ const projects = [
     category: "Fullstack",
     desc: "Aura Privé is a modern e-commerce platform dedicated to selling exclusive and elegant products. The system allows users to browse a product catalog, place orders online, and manage their purchases simply and securely.",
     image: "/Image3.jpg",
-    tags: ["Next.js", "Node.js", "PostgreSQL"],
+    tags: ["React", "Node.js", "Express.js", "Tailwind", "PostgreSQL"],
     demo: "https://auraprivefrontend.vercel.app/"
   },
   {
