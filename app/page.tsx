@@ -1015,7 +1015,7 @@ export default function Home() {
                   <div className="relative flex justify-between items-start">
                     <div>
                       <p className="text-sm uppercase tracking-wider text-[#A2CA6C] font-semibold">Experience</p>
-                      <h3 className="text-3xl font-bold mt-2 text-gray-900 dark:text-white">3+ Years</h3>
+                      <h3 className="text-3xl font-bold mt-2 text-gray-900 dark:text-white">2 Years</h3>
                       <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Fullstack Development</p>
                     </div>
                     <div className="p-2 rounded-xl bg-[#A2CA6C]/10 group-hover:bg-[#A2CA6C]/20 transition-all duration-300">
@@ -1371,65 +1371,6 @@ export default function Home() {
                 </motion.div>
               ))}
             </div>
-
-            {/* Section statistiques style Pinterest */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
-              transition={{ delay: 0.8, duration: 0.8 }}
-              className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-6"
-            >
-              {[
-                { 
-                  icon: "✨",
-                  value: "10+", 
-                  label: "Projets réalisés",
-                  desc: "Des applications web et mobiles",
-                  color: "from-emerald-400 to-emerald-500"
-                },
-                { 
-                  icon: "🚀",
-                  value: "60%", 
-                  label: "Clients satisfaits",
-                  desc: "Taux de satisfaction exceptionnel",
-                  color: "from-amber-400 to-amber-500"
-                },
-                { 
-                  icon: "💡",
-                  value: "24/7", 
-                  label: "Support disponible",
-                  desc: "Toujours à l'écoute de vos besoins",
-                  color: "from-emerald-400 to-amber-400"
-                }
-              ].map((stat, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: false }}
-                  transition={{ delay: 1 + idx * 0.1 }}
-                  whileHover={{ y: -5 }}
-                  className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
-                >
-                  {/* Dégradé de fond */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-5`} />
-                  
-                  <div className="relative p-6 text-center">
-                    <div className="text-4xl mb-3">{stat.icon}</div>
-                    <div className="text-3xl font-bold text-gray-800 dark:text-white mb-1">
-                      {stat.value}
-                    </div>
-                    <div className="text-sm font-medium text-emerald-600 dark:text-emerald-400 mb-2">
-                      {stat.label}
-                    </div>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">
-                      {stat.desc}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
 
             {/* Call to action */}
             <motion.div
