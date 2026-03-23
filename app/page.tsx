@@ -34,7 +34,8 @@ import {
   HeartHandshake,
   Target,
   Trophy,
-  Sparkles
+  Sparkles,
+  Briefcase
 } from 'lucide-react';
 
 import { 
@@ -991,7 +992,7 @@ export default function Home() {
                   }}
                 >
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-[#A2CA6C]">10+</div>
+                    <div className="text-2xl font-bold text-[#A2CA6C]">5+</div>
                     <div className="text-xs text-gray-500">Projects Completed</div>
                   </div>
                 </motion.div>
@@ -1017,7 +1018,9 @@ export default function Home() {
                       <h3 className="text-3xl font-bold mt-2 text-gray-900 dark:text-white">3+ Years</h3>
                       <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Fullstack Development</p>
                     </div>
-                    <div className="text-4xl opacity-20 group-hover:opacity-40 transition-opacity">💻</div>
+                    <div className="p-2 rounded-xl bg-[#A2CA6C]/10 group-hover:bg-[#A2CA6C]/20 transition-all duration-300">
+                      <Briefcase size={28} className="text-[#A2CA6C]" />
+                    </div>
                   </div>
                 </motion.div>
 
@@ -1029,7 +1032,7 @@ export default function Home() {
                   <div className="relative flex justify-between items-start">
                     <div>
                       <p className="text-sm uppercase tracking-wider text-[#A2CA6C] font-semibold">Impact</p>
-                      <h3 className="text-3xl font-bold mt-2 text-gray-900 dark:text-white">100%</h3>
+                      <h3 className="text-3xl font-bold mt-2 text-gray-900 dark:text-white">70%</h3>
                       <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Client Satisfaction</p>
                     </div>
                     <div className="p-2 rounded-xl bg-[#A2CA6C]/10 group-hover:bg-[#A2CA6C]/20 transition-all duration-300">
