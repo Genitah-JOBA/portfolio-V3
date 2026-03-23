@@ -1835,6 +1835,39 @@ export default function Home() {
                 </div>
               )}
             </AnimatePresence>
+
+            {/* NOUVEAU BOUTON : Style "explore" */}
+            <motion.div
+              className="text-center mt-16"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+            >
+              <motion.a
+                href="#"
+                className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full overflow-hidden"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                {/* Background animé */}
+                <div className="absolute inset-0 bg-gradient-to-r from-[#A2CA6C] to-[#244539] opacity-90 group-hover:opacity-100 transition-opacity" />
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/30 to-white/0"
+                  animate={{ x: ['-100%', '200%'] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                />
+                
+                <span className="relative z-10 text-white font-semibold">View all projects</span>
+                <motion.span
+                  className="relative z-10 text-white"
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  →
+                </motion.span>
+              </motion.a>
+            </motion.div>
           </div>
         </section>
 
