@@ -869,7 +869,6 @@ export default function Home() {
           initial={{ scale: 0 }}
           whileInView={{ scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.6 }}
           animate={{
             scale: [1, 1.3, 1],
             opacity: [0.5, 1, 0.5],
