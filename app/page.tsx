@@ -965,7 +965,6 @@ export default function Home() {
           className="absolute -bottom-4 -right-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-3 border border-[#A2CA6C]/30"
           initial={{ opacity: 0, scale: 0 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 1, type: "spring" }}
           animate={{
             y: [0, -5, 0],
           }}
@@ -973,6 +972,7 @@ export default function Home() {
             duration: 3,
             repeat: Infinity,
             delay: 1.5,
+            type: "spring"
           }}
         >
           <div className="text-center">
