@@ -1,14 +1,14 @@
 "use client";
 
 import Footer from './components/Footer';
-import { useState, useRef, useEffect, useMemo, useCallback } from "react";
+import { useState, useRef, useEffect } from "react";
 import React from "react";
 import Image from "next/image";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { IconDownload, IconGauge } from '@tabler/icons-react';
 import { Sparkle, Strategy, Handshake } from "@phosphor-icons/react";
 import { Cpu,Code2 } from 'lucide-react';
-import { motion, AnimatePresence, LazyMotion, domAnimation } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Server, Cloud, Rocket } from 'lucide-react';
 import { 
   IconBrandReact, IconBrandNextjs, IconBrandTailwind, 
@@ -37,29 +37,40 @@ interface Project {
   demo: string;
 }
 
+// ========== DÉFINITIONS DES TYPES - À METTRE EN TOUT PREMIER ==========
 type MessageType = 'success' | 'error' | 'info' | 'warning' | '';
 
 interface MessageBoxState {
   show: boolean;
-  type: MessageType;
+  type: MessageType;  // Accepte '' comme valeur
   message: string;
 }
 
 interface MessageBoxProps {
   message: string;
-  type: MessageType;
+  type: MessageType;  // Doit correspondre exactement
   onClose: () => void;
   dark?: boolean;
   duration?: number;
 }
 
-// ================= MESSAGE BOX OPTIMISÉ =================
-const MessageBox = ({ message, type, onClose, dark = false, duration = 5000 }: MessageBoxProps) => {
+// ================= COMPOSANT MESSAGE BOX =================
+const MessageBox = ({ 
+  message, 
+  type, 
+  onClose, 
+  dark = false,
+  duration = 5000 
+}: MessageBoxProps) => {
   useEffect(() => {
-    const timer = setTimeout(onClose, duration);
+    const timer = setTimeout(() => {
+      onClose();
+    }, duration);
+
     return () => clearTimeout(timer);
   }, [onClose, duration]);
 
+  // Couleurs en fonction du type
   const getBgColor = () => {
     switch(type) {
       case 'success': return 'bg-green-500';
@@ -123,7 +134,7 @@ const MessageBox = ({ message, type, onClose, dark = false, duration = 5000 }: M
   );
 };
 
-// ================= PARTICULES OPTIMISÉES =================
+// ================= COMPOSANT POUR LES PARTICULES =================
 const Particles = () => {
   const [isMounted, setIsMounted] = useState(false);
 
@@ -131,14 +142,13 @@ const Particles = () => {
     setIsMounted(true);
   }, []);
 
+  // Ne rien rendre côté serveur
   if (!isMounted) return null;
 
-  // Réduire le nombre de particules pour améliorer les performances
-  const particles = useMemo(() => Array(12).fill(null), []);
-
+  // Ne rendre que côté client
   return (
     <>
-      {particles.map((_, i) => (
+      {[...Array(20)].map((_, i) => (
         <motion.div
           key={i}
           className="absolute w-1 h-1 bg-[#21D375] rounded-full"
@@ -147,13 +157,13 @@ const Particles = () => {
             top: `${Math.random() * 100}%`,
           }}
           animate={{
-            opacity: [0, 0.5, 0],
-            scale: [0, 1, 0],
-            x: [0, (Math.random() - 0.5) * 60],
-            y: [0, (Math.random() - 0.5) * 60],
+            opacity: [0, 0.8, 0],
+            scale: [0, 1.5, 0],
+            x: [0, (Math.random() - 0.5) * 100],
+            y: [0, (Math.random() - 0.5) * 100],
           }}
           transition={{
-            duration: 2 + Math.random(),
+            duration: 3 + Math.random() * 2,
             repeat: Infinity,
             delay: Math.random() * 2,
             ease: "easeInOut"
@@ -164,51 +174,42 @@ const Particles = () => {
   );
 };
 
-// ================= PARTICULES FIXES OPTIMISÉES =================
+// ================= COMPOSANT POUR LES PARTICULES FIXES (SECTION ABOUT) =================
 const FixedParticles = () => {
-  // Réduire le nombre de particules
-  const particles = useMemo(() => {
-    const items = [];
-    for (let row = 0; row < 3; row++) {
-      for (let col = 0; col < 3; col++) {
-        items.push({ row, col });
-      }
-    }
-    return items;
-  }, []);
-
   return (
-    <div className="absolute inset-0 pointer-events-none">
-      {particles.map(({ row, col }) => {
-        const baseTop = 15 + row * 25;
-        const baseLeft = 15 + col * 25;
-        return (
-          <motion.div
-            key={`${row}-${col}`}
-            className="absolute w-1 h-1 bg-[#21D375]/30 rounded-full"
-            style={{
-              top: `${baseTop}%`,
-              left: `${baseLeft}%`,
-            }}
-            animate={{
-              scale: [0, 1, 0],
-              opacity: [0, 0.3, 0],
-              y: [0, -30, -60],
-            }}
-            transition={{
-              duration: 2.5,
-              repeat: Infinity,
-              delay: (row * 3 + col) * 0.2,
-              ease: "easeOut"
-            }}
-          />
-        );
-      })}
+    <div className="absolute inset-0">
+      {Array.from({ length: 5 }).map((_, row) => (
+        Array.from({ length: 4 }).map((_, col) => {
+          const baseTop = 10 + row * 20;
+          const baseLeft = 10 + col * 25;
+          return (
+            <motion.div
+              key={`${row}-${col}`}
+              className="absolute w-1 h-1 bg-[#21D375]/30 rounded-full"
+              style={{
+                top: `${baseTop}%`,
+                left: `${baseLeft}%`,
+              }}
+              animate={{
+                scale: [0, 1, 0],
+                opacity: [0, 0.5, 0],
+                y: [0, -30, -60],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                delay: (row * 4 + col) * 0.2,
+                ease: "easeOut"
+              }}
+            />
+          );
+        })
+      ))}
     </div>
   );
 };
 
-// ================= DONNÉES (inchangées) =================
+// ================= DONNÉES =================
 const skillCategories = [
   {
     title: "Frontend",
@@ -270,7 +271,7 @@ const projects = [
     id: 1,
     title: "Aura Privée",
     category: "Fullstack",
-    desc: "Aura Privé is a modern e-commerce platform dedicated to selling exclusive and elegant products.",
+    desc: "Aura Privé is a modern e-commerce platform dedicated to selling exclusive and elegant products. The system allows users to browse a product catalog, place orders online, and manage their purchases simply and securely.",
     image: "/Image3.jpg",
     tags: ["Next.js", "Node.js", "PostgreSQL"],
     demo: "https://auraprivefrontend.vercel.app/"
@@ -295,7 +296,7 @@ const projects = [
   }
 ];
 
-// ================= COMPOSANT PRINCIPAL OPTIMISÉ =================
+// ================= COMPOSANT PRINCIPAL =================
 export default function Home() {
   const [dark] = useState(true);
   const [filter, setFilter] = useState("All");
