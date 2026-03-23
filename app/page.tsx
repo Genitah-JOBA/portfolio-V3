@@ -864,35 +864,34 @@ export default function Home() {
         />
         
         {/* Petit point brillant */}
-        {/* Petit point brillant - Version corrigée */}
-<motion.div
-  className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-2 h-2 rounded-full bg-[#A2CA6C]"
-  initial={{ scale: 0 }}
-  whileInView={{ scale: 1 }}
-  viewport={{ once: true }}
-  animate={{
-    scale: [1, 1.3, 1],
-    opacity: [0.5, 1, 0.5],
-  }}
-  transition={{
-    // Première animation (entrée)
-    duration: 0.5,
-    delay: 0.6,
-    // Animation continue
-    scale: {
-      duration: 2,
-      repeat: Infinity,
-      delay: 0.8,
-      ease: "easeInOut"
-    },
-    opacity: {
-      duration: 2,
-      repeat: Infinity,
-      delay: 0.8,
-      ease: "easeInOut"
-    }
-  }}
-/>
+        <motion.div
+          className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-2 h-2 rounded-full bg-[#A2CA6C]"
+          initial={{ scale: 0 }}
+          whileInView={{ scale: 1 }}
+          viewport={{ once: true }}
+          animate={{
+            scale: [1, 1.3, 1],
+            opacity: [0.5, 1, 0.5],
+          }}
+          transition={{
+            // Première animation (entrée)
+            duration: 0.5,
+            delay: 0.6,
+            // Animation continue
+            scale: {
+              duration: 2,
+              repeat: Infinity,
+              delay: 0.8,
+              ease: "easeInOut"
+            },
+            opacity: {
+              duration: 2,
+              repeat: Infinity,
+              delay: 0.8,
+              ease: "easeInOut"
+            }
+          }}
+        />
       </h2>
       
       <motion.p
@@ -951,10 +950,10 @@ export default function Home() {
           </div>
           <div>
             <span className="text-sm font-semibold text-[#A2CA6C] dark:text-[#21D375]">
-              Expertise fullstack confirmée
+              Fullstack Developer
             </span>
             <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-              5+ technologies maîtrisées
+              5+ technological mastery
             </p>
           </div>
         </motion.div>
