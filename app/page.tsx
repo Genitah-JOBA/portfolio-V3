@@ -31,7 +31,14 @@ import {
   Gauge,
   Users,
   Award,
-  Clock
+  Clock,
+  Award,
+  Star,
+  ThumbsUp,
+  HeartHandshake,
+  Target,
+  Trophy,
+  Sparkles
 } from 'lucide-react';
 
 import { 
@@ -1029,7 +1036,9 @@ export default function Home() {
                       <h3 className="text-3xl font-bold mt-2 text-gray-900 dark:text-white">100%</h3>
                       <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Client Satisfaction</p>
                     </div>
-                    <div className="text-4xl opacity-20 group-hover:opacity-40 transition-opacity">⭐</div>
+                    <div className="p-2 rounded-xl bg-[#A2CA6C]/10 group-hover:bg-[#A2CA6C]/20 transition-all duration-300">
+                      <Award size={28} className="text-[#A2CA6C]" />
+                    </div>
                   </div>
                   {/* Barre de progression */}
                   <div className="mt-4 h-1 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
@@ -1055,7 +1064,7 @@ export default function Home() {
                       <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Fullstack Development</p>
                     </div>
                     <div className="p-2 rounded-xl bg-[#A2CA6C]/10 group-hover:bg-[#A2CA6C]/20 transition-all duration-300">
-                      <Code2 size={28} className="text-[#A2CA6C]" />
+                      <Users size={28} className="text-[#A2CA6C]" />
                     </div>
                   </div>
                   <div className="flex gap-1 mt-4">
