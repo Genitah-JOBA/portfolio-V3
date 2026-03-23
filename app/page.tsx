@@ -864,8 +864,9 @@ export default function Home() {
         />
         
         {/* Petit point brillant */}
-        <motion.div
-          className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-2 h-2 rounded-full bg-[#A2CA6C]"
+        {/* Petit point brillant - Version corrigée */}
+<motion.div
+  className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-2 h-2 rounded-full bg-[#A2CA6C]"
   initial={{ scale: 0 }}
   whileInView={{ scale: 1 }}
   viewport={{ once: true }}
@@ -874,12 +875,24 @@ export default function Home() {
     opacity: [0.5, 1, 0.5],
   }}
   transition={{
-    duration: 2,
-    repeat: Infinity,
-    delay: 0.8,
-    ease: "easeInOut"
+    // Première animation (entrée)
+    duration: 0.5,
+    delay: 0.6,
+    // Animation continue
+    scale: {
+      duration: 2,
+      repeat: Infinity,
+      delay: 0.8,
+      ease: "easeInOut"
+    },
+    opacity: {
+      duration: 2,
+      repeat: Infinity,
+      delay: 0.8,
+      ease: "easeInOut"
+    }
   }}
-        />
+/>
       </h2>
       
       <motion.p
