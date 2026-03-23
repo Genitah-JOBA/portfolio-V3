@@ -921,7 +921,7 @@ export default function Home() {
               <span className="text-[#A2CA6C]">$</span> whoami
               <br />
               <span className="text-gray-600 dark:text-gray-400">
-                > Fullstack Developer passionate about creating impactful digital experiences.
+                * Fullstack Developer passionate about creating impactful digital experiences.
               </span>
             </motion.p>
 
@@ -934,7 +934,7 @@ export default function Home() {
               <span className="text-[#A2CA6C]">$</span> skills --tech-stack
               <br />
               <span className="text-gray-600 dark:text-gray-400">
-                > React, Next.js, Node.js, Python, PHP, Laravel, Java, C#
+                * React, Next.js, Node.js, Python, PHP, Laravel, Java, C#
               </span>
             </motion.p>
 
@@ -947,7 +947,7 @@ export default function Home() {
               <span className="text-[#A2CA6C]">$</span> philosophy --principles
               <br />
               <span className="text-gray-600 dark:text-gray-400">
-                > Clean code, performance, user experience, scalability
+                * Clean code, performance, user experience, scalability
               </span>
             </motion.p>
 
