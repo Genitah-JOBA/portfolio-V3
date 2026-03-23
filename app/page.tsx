@@ -774,9 +774,9 @@ export default function Home() {
 
         {/* SECTION ABOUT */}
         <section id="about" className="py-20 px-6 overflow-hidden relative">
-  {/* Éléments d'arrière-plan simplifiés et optimisés */}
+  {/* Éléments d'arrière-plan animés - OPTIMISÉS */}
   <div className="absolute inset-0 overflow-hidden pointer-events-none">
-    {/* Grille statique (pas d'animation pour économiser les ressources) */}
+    {/* Grille statique avec légère animation - plus légère */}
     <div 
       className="absolute inset-0"
       style={{
@@ -785,31 +785,36 @@ export default function Home() {
         opacity: 0.1
       }}
     />
-
-    {/* Un seul cercle lumineux qui pulse doucement */}
+    
+    {/* Un seul cercle concentrique au lieu de 4 */}
     <motion.div
-      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full"
+      className="absolute rounded-full border-2 border-[#A2CA6C]/20"
       style={{
-        background: 'radial-gradient(circle, rgba(162,202,108,0.15) 0%, rgba(162,202,108,0) 70%)',
+        left: '50%',
+        top: '50%',
+        width: '400px',
+        height: '400px',
+        marginLeft: '-200px',
+        marginTop: '-200px',
       }}
       animate={{
-        scale: [1, 1.2, 1],
-        opacity: [0.3, 0.5, 0.3],
+        scale: [1, 1.1, 1],
+        rotate: [0, 360],
       }}
       transition={{
-        duration: 8,
+        duration: 20,
         repeat: Infinity,
-        ease: "easeInOut"
+        ease: "linear"
       }}
     />
 
     {/* Particules réduites et optimisées */}
     <div className="absolute inset-0">
       {Array.from({ length: 20 }).map((_, i) => {
-        const angle = (i * 18) * (Math.PI / 180);
-        const radius = 200 + (i % 3) * 100;
-        const x = 50 + Math.cos(angle) * (radius / 8);
-        const y = 50 + Math.sin(angle) * (radius / 8);
+        const angle = (i / 20) * Math.PI * 2;
+        const radius = 150 + Math.random() * 100;
+        const x = 50 + Math.cos(angle) * (radius / 4);
+        const y = 50 + Math.sin(angle) * (radius / 4);
         
         return (
           <motion.div
@@ -822,13 +827,13 @@ export default function Home() {
               opacity: 0.3,
             }}
             animate={{
-              scale: [0, 1, 0],
-              opacity: [0, 0.4, 0],
+              scale: [1, 1.5, 1],
+              opacity: [0.2, 0.5, 0.2],
             }}
             transition={{
-              duration: 3,
+              duration: 3 + Math.random() * 2,
               repeat: Infinity,
-              delay: i * 0.15,
+              delay: i * 0.1,
               ease: "easeInOut"
             }}
           />
@@ -838,180 +843,140 @@ export default function Home() {
   </div>
 
   <div className="max-w-6xl mx-auto relative z-10">
-    {/* Titre avec animation d'entrée simplifiée mais percutante */}
+    {/* Titre avec animation simplifiée mais élégante */}
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+      transition={{ duration: 0.6 }}
       className="text-center mb-16"
     >
-      <motion.h2 
-        className="text-5xl md:text-7xl font-bold inline-block relative"
-        initial={{ scale: 0.9 }}
-        whileInView={{ scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, type: "spring", stiffness: 200 }}
-      >
-        {/* Effet de brillance au hover */}
-        <span className="relative inline-block">
+      <h2 className="text-5xl md:text-7xl font-bold inline-block relative">
+        <span className="bg-gradient-to-r from-[#A2CA6C] to-[#244539] bg-clip-text text-transparent">
           ABOUT
-          <motion.span
-            className="absolute inset-0 bg-gradient-to-r from-[#A2CA6C]/0 via-[#A2CA6C]/30 to-[#A2CA6C]/0"
-            initial={{ x: '-100%' }}
-            animate={{ x: '200%' }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "linear",
-              repeatDelay: 2
-            }}
-          />
         </span>
-        
-        {/* Ligne sous le titre */}
+        {/* Ligne décorative simple */}
         <motion.div
-          className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 h-0.5 bg-gradient-to-r from-transparent via-[#A2CA6C] to-transparent"
-          initial={{ width: 0 }}
-          whileInView={{ width: '80%' }}
+          className="absolute -bottom-4 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-[#A2CA6C] to-transparent"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.3 }}
         />
-      </motion.h2>
+      </h2>
       
       <motion.p
-        className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mt-6"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.2 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mt-6"
       >
         Découvrez mon parcours et ma passion pour le développement
       </motion.p>
     </motion.div>
 
     <div className="grid md:grid-cols-2 gap-12 items-center">
-      {/* Texte avec animation d'apparition fluide */}
+      {/* Texte avec apparition fluide */}
       <motion.div
         initial={{ opacity: 0, x: -30 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.5, delay: 0.1 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
       >
-        <motion.p 
-          className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6 text-lg"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.2 }}
-        >
+        <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6 text-lg">
           As a passionate freelance Fullstack developer, I design modern, robust, and scalable web applications. 
           My goal is to transform ideas into high-performing and intuitive digital products.
-        </motion.p>
+        </p>
 
-        <motion.p 
-          className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg"
+        <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
+          I work with technologies such as React, Next.js, Node.js, Python, PHP, Laravel, Java and C#, 
+          with an emphasis on code quality, user experience and performance.
+        </p>
+
+        {/* Indicateur d'expertise simplifié */}
+        <motion.div 
+          className="flex items-center gap-3 mt-8"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
         >
-          I work with technologies such as React, Next.js, Node.js, Python, PHP, Laravel, Java and C#, 
-          with an emphasis on code quality, user experience and performance.
-        </motion.p>
-
-        {/* Indicateur d'expertise animé */}
-        <motion.div 
-          className="flex items-center gap-2 mt-8"
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.4 }}
-        >
-          <div className="w-10 h-10 rounded-full border-2 border-[#A2CA6C] dark:border-[#21D375] flex items-center justify-center">
-            <div className="w-1.5 h-1.5 bg-[#A2CA6C] dark:bg-[#21D375] rounded-full animate-pulse" />
+          <div className="w-10 h-10 rounded-full bg-[#A2CA6C]/20 flex items-center justify-center">
+            <div className="w-2 h-2 bg-[#A2CA6C] rounded-full animate-pulse" />
           </div>
           <span className="text-sm text-[#A2CA6C] dark:text-[#21D375] font-medium">
-            Fullstack Developer
+            Expertise fullstack confirmée
           </span>
         </motion.div>
       </motion.div>
 
-      {/* Cartes de valeurs avec animations en cascade */}
+      {/* Blocs valeurs avec animations au hover seulement */}
       <motion.div 
         className="space-y-5"
         initial={{ opacity: 0, x: 30 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.5, delay: 0.2 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
       >
-        {/* Carte 1 - Expertise technique */}
+        {/* Carte Expertise technique */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.3 }}
-          whileHover={{ scale: 1.02, y: -2 }}
-          className="p-5 rounded-xl bg-gradient-to-br from-[#A2CA6C] to-[#8BB55C] dark:from-[#244539] dark:to-[#1A3329] shadow-md hover:shadow-xl transition-all duration-300 group cursor-pointer"
+          whileHover={{ scale: 1.02, x: 5 }}
+          transition={{ duration: 0.2 }}
+          className="p-5 rounded-xl bg-gradient-to-br from-[#A2CA6C] to-[#8BB55C] dark:from-[#244539] dark:to-[#1A3329] shadow-md cursor-pointer"
         >
           <div className="flex items-start gap-4">
-            <div className="p-2.5 bg-white/20 rounded-xl group-hover:scale-110 transition-transform duration-300">
+            <div className="p-2 bg-white/20 rounded-lg">
               <Cpu size={28} className="text-black dark:text-white" />
             </div>
-            <div className="flex-1">
+            <div>
               <h3 className="text-lg font-semibold mb-1 text-black dark:text-white">
                 Expertise technique
               </h3>
               <p className="text-black/80 dark:text-white/90 text-sm">
-                Full-stack development with clean architecture and best practices.
+                Full-stack development with a clean architecture.
               </p>
             </div>
           </div>
         </motion.div>
 
-        {/* Carte 2 - Performance */}
+        {/* Carte Performance */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.4 }}
-          whileHover={{ scale: 1.02, y: -2 }}
-          className="p-5 rounded-xl bg-gradient-to-br from-[#A2CA6C] to-[#8BB55C] dark:from-[#244539] dark:to-[#1A3329] shadow-md hover:shadow-xl transition-all duration-300 group cursor-pointer"
+          whileHover={{ scale: 1.02, x: 5 }}
+          transition={{ duration: 0.2 }}
+          className="p-5 rounded-xl bg-gradient-to-br from-[#A2CA6C] to-[#8BB55C] dark:from-[#244539] dark:to-[#1A3329] shadow-md cursor-pointer"
         >
           <div className="flex items-start gap-4">
-            <div className="p-2.5 bg-white/20 rounded-xl group-hover:scale-110 transition-transform duration-300">
+            <div className="p-2 bg-white/20 rounded-lg">
               <IconGauge size={28} stroke={1.5} className="text-black dark:text-white" />
             </div>
-            <div className="flex-1">
+            <div>
               <h3 className="text-lg font-semibold mb-1 text-black dark:text-white">
                 Performance
               </h3>
               <p className="text-black/80 dark:text-white/90 text-sm">
-                Fast, SEO-optimized applications with excellent Core Web Vitals.
+                Fast, SEO-optimized applications.
               </p>
             </div>
           </div>
         </motion.div>
 
-        {/* Carte 3 - Collaboration */}
+        {/* Carte Collaboration */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.5 }}
-          whileHover={{ scale: 1.02, y: -2 }}
-          className="p-5 rounded-xl bg-gradient-to-br from-[#A2CA6C] to-[#8BB55C] dark:from-[#244539] dark:to-[#1A3329] shadow-md hover:shadow-xl transition-all duration-300 group cursor-pointer"
+          whileHover={{ scale: 1.02, x: 5 }}
+          transition={{ duration: 0.2 }}
+          className="p-5 rounded-xl bg-gradient-to-br from-[#A2CA6C] to-[#8BB55C] dark:from-[#244539] dark:to-[#1A3329] shadow-md cursor-pointer"
         >
           <div className="flex items-start gap-4">
-            <div className="p-2.5 bg-white/20 rounded-xl group-hover:scale-110 transition-transform duration-300">
+            <div className="p-2 bg-white/20 rounded-lg">
               <Handshake size={28} weight="duotone" className="text-black dark:text-white" />
             </div>
-            <div className="flex-1">
+            <div>
               <h3 className="text-lg font-semibold mb-1 text-black dark:text-white">
                 Collaboration
               </h3>
               <p className="text-black/80 dark:text-white/90 text-sm">
-                Clear communication, agile methodology, and strategic support.
+                Clear communication and strategic support.
               </p>
             </div>
           </div>
@@ -1019,22 +984,23 @@ export default function Home() {
       </motion.div>
     </div>
     
-    {/* Bouton d'action */}
+    {/* Bouton d'action simplifié mais élégant */}
     <motion.div
       className="text-center mt-12"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: 0.6 }}
+      transition={{ duration: 0.5, delay: 0.5 }}
     >
       <a
         href="#contact"
-        className="inline-flex items-center gap-2 px-8 py-3 bg-[#A2CA6C] dark:bg-[#244539] text-white font-semibold rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 group"
+        className="inline-flex items-center gap-2 px-8 py-3 bg-[#A2CA6C] dark:bg-[#244539] text-white font-medium rounded-full hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 group"
       >
         <span>Let's work together</span>
         <motion.span
-          animate={{ x: [0, 4, 0] }}
+          animate={{ x: [0, 3, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
+          className="group-hover:translate-x-1 transition-transform"
         >
           →
         </motion.span>
