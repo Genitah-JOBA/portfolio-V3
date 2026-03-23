@@ -2051,15 +2051,14 @@ export default function Home() {
           initial={{ scale: 0, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           viewport={{ once: false }}
-          transition={{ duration: 0.6, delay: 0.5 }}
           animate={{
             scale: [1, 1.1, 1],
             opacity: [0.3, 0.6, 0.3],
           }}
           transition={{
-            duration: 3,
+            duration: 0.6,
             repeat: Infinity,
-            delay: 1,
+            delay: 0.5,
           }}
         />
       </h2>
