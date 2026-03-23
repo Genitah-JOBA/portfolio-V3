@@ -1053,17 +1053,16 @@ export default function Home() {
                 {/* Métrique 3 - Speed */}
                 <motion.div
                   whileHover={{ scale: 1.02, x: 5 }}
-                  className="group relative bg-gradient-to-r from-white/10 to-transparent backdrop-blur-sm rounded-2xl p-6 border border-white/20 dark:border-white/10 overflow-hidden"
+                  className="group relative bg-gradient-to-r from-white/10 to-transparent backdrop-blur-sm rounded-2xl p-6 border border-white/20 dark:border-white/10"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#A2CA6C]/0 to-[#A2CA6C]/5 group-hover:opacity-100 transition-opacity" />
                   <div className="relative flex justify-between items-start">
                     <div>
-                      <p className="text-sm uppercase tracking-wider text-[#A2CA6C] font-semibold">Experience</p>
-                      <h3 className="text-3xl font-bold mt-2 text-gray-900 dark:text-white">3+ Years</h3>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Fullstack Development</p>
+                      <p className="text-sm uppercase tracking-wider text-[#A2CA6C] font-semibold">Performance</p>
+                      <h3 className="text-3xl font-bold mt-2 text-gray-900 dark:text-white">90+</h3>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Lighthouse Score</p>
                     </div>
                     <div className="p-2 rounded-xl bg-[#A2CA6C]/10 group-hover:bg-[#A2CA6C]/20 transition-all duration-300">
-                      <Users size={28} className="text-[#A2CA6C]" />
+                      <Gauge size={28} className="text-[#A2CA6C]" />
                     </div>
                   </div>
                   <div className="flex gap-1 mt-4">
@@ -1880,24 +1879,12 @@ export default function Home() {
           </div>
         </div>
 
-        {/* CONTACT SECTION */}
-        <motion.section
+        {/* CONTACT SECTION - DESIGN SPECTACULAIRE */}
+<motion.section
   id="contact"
-  initial={{ opacity: 0, scale: 0.5, rotateY: 90, y: 100 }}
-  whileInView={{ 
-    opacity: 1, 
-    scale: 1, 
-    rotateY: 0,
-    y: 0,
-    transition: {
-      type: "spring",
-      damping: 12,
-      stiffness: 80,
-      duration: 1.2,
-      delay: 0.2
-    }
-  }}
-  viewport={{ once: false, margin: "-50px" }}
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  viewport={{ once: false, margin: "-100px" }}
   className="w-full max-w-[800px] mt-32 mb-16 mx-auto rounded-[2rem] px-8 py-6 border backdrop-blur-sm relative overflow-hidden"
   style={{
     backgroundColor: dark ? '#244539' : '#A2CA6C',
@@ -1907,145 +1894,181 @@ export default function Home() {
       : '0 20px 40px rgba(0,0,0,0.12)'
   }}
 >
-  {/* Effet de particules lumineuses qui tournent - COULEURS ADAPTÉES */}
-  <motion.div
-    className="absolute inset-0 pointer-events-none"
-    animate={{
-      background: dark ? [
-        "radial-gradient(circle at 20% 20%, rgba(33, 211, 117, 0.15) 0%, transparent 50%)",
-        "radial-gradient(circle at 80% 80%, rgba(33, 211, 117, 0.15) 0%, transparent 50%)",
-        "radial-gradient(circle at 20% 80%, rgba(33, 211, 117, 0.15) 0%, transparent 50%)",
-        "radial-gradient(circle at 80% 20%, rgba(33, 211, 117, 0.15) 0%, transparent 50%)",
-        "radial-gradient(circle at 20% 20%, rgba(33, 211, 117, 0.15) 0%, transparent 50%)",
-      ] : [
-        "radial-gradient(circle at 20% 20%, rgba(162, 202, 108, 0.15) 0%, transparent 50%)",
-        "radial-gradient(circle at 80% 80%, rgba(162, 202, 108, 0.15) 0%, transparent 50%)",
-        "radial-gradient(circle at 20% 80%, rgba(162, 202, 108, 0.15) 0%, transparent 50%)",
-        "radial-gradient(circle at 80% 20%, rgba(162, 202, 108, 0.15) 0%, transparent 50%)",
-        "radial-gradient(circle at 20% 20%, rgba(162, 202, 108, 0.15) 0%, transparent 50%)",
-      ]
-    }}
-    transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-  />
+  {/* ========== ANIMATIONS DE FOND PERMANENTES ========== */}
+  
+  {/* Effet de vagues lumineuses */}
+  <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="contactWave" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="#A2CA6C" stopOpacity="0">
+          <animate attributeName="stop-opacity" values="0;0.5;0" dur="3s" repeatCount="indefinite" />
+        </stop>
+        <stop offset="50%" stopColor="#A2CA6C" stopOpacity="0.3">
+          <animate attributeName="stop-opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite" />
+        </stop>
+        <stop offset="100%" stopColor="#A2CA6C" stopOpacity="0">
+          <animate attributeName="stop-opacity" values="0;0.5;0" dur="3s" repeatCount="indefinite" />
+        </stop>
+      </linearGradient>
+    </defs>
+    <motion.path
+      d="M0,100 Q150,50 300,100 T600,100 T900,80 T1200,100 T1500,90"
+      stroke="url(#contactWave)"
+      strokeWidth="2"
+      fill="none"
+      animate={{
+        d: [
+          "M0,100 Q150,50 300,100 T600,100 T900,80 T1200,100 T1500,90",
+          "M0,120 Q150,80 300,120 T600,110 T900,100 T1200,120 T1500,110",
+          "M0,80 Q150,110 300,80 T600,90 T900,100 T1200,80 T1500,90",
+          "M0,100 Q150,50 300,100 T600,100 T900,80 T1200,100 T1500,90",
+        ]
+      }}
+      transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+    />
+  </svg>
 
-  {/* Effet de fond animé - plus subtil */}
-  <motion.div
-    className="absolute inset-0 pointer-events-none"
-    initial={{ opacity: 0 }}
-    whileInView={{ opacity: 1 }}
-    transition={{ delay: 0.3, duration: 1 }}
-  >
-    {/* Cercle lumineux animé - Gauche */}
+  {/* Cercles pulsants */}
+  {[...Array(3)].map((_, i) => (
     <motion.div
-      className="absolute -top-20 -left-20 w-64 h-64 rounded-full blur-3xl"
+      key={i}
+      className="absolute rounded-full border border-[#A2CA6C]/30"
       style={{
-        backgroundColor: dark ? '#21D375' : '#A2CA6C',
-        opacity: 0.1
+        left: '50%',
+        top: '50%',
+        width: `${200 + i * 80}px`,
+        height: `${200 + i * 80}px`,
+        marginLeft: `-${100 + i * 40}px`,
+        marginTop: `-${100 + i * 40}px`,
       }}
       animate={{
-        scale: [1, 1.3, 1],
-        x: [0, 30, 0],
-        y: [0, 30, 0],
-        rotate: [0, 45, 0],
+        scale: [1, 1.2, 1],
+        opacity: [0.1, 0.3, 0.1],
       }}
       transition={{
-        duration: 8,
+        duration: 4 + i,
         repeat: Infinity,
-        ease: "easeInOut"
+        delay: i * 0.5,
+        ease: "easeInOut",
       }}
     />
-    {/* Cercle lumineux animé - Droite */}
+  ))}
+
+  {/* Particules flottantes */}
+  {Array.from({ length: 40 }).map((_, i) => (
     <motion.div
-      className="absolute -bottom-20 -right-20 w-64 h-64 rounded-full blur-3xl"
+      key={`particle-${i}`}
+      className="absolute rounded-full"
       style={{
-        backgroundColor: dark ? '#21D375' : '#A2CA6C',
-        opacity: 0.1
+        width: Math.random() * 4 + 1 + 'px',
+        height: Math.random() * 4 + 1 + 'px',
+        background: i % 2 === 0 ? '#A2CA6C' : '#244539',
+        left: Math.random() * 100 + '%',
+        top: Math.random() * 100 + '%',
+        filter: 'blur(1px)',
       }}
       animate={{
-        scale: [1.3, 1, 1.3],
-        x: [0, -30, 0],
-        y: [0, -30, 0],
-        rotate: [45, 0, 45],
+        y: [0, Math.random() * 80 - 40, 0],
+        x: [0, Math.random() * 60 - 30, 0],
+        opacity: [0, 0.6, 0],
+        scale: [0, 1.5, 0],
       }}
       transition={{
-        duration: 8,
+        duration: 6 + Math.random() * 4,
         repeat: Infinity,
-        ease: "easeInOut"
+        delay: Math.random() * 5,
+        ease: "easeInOut",
       }}
     />
-  </motion.div>
+  ))}
 
-  {/* Lignes lumineuses qui traversent */}
-  <motion.div
-    className="absolute inset-0 pointer-events-none"
-    initial={{ opacity: 0 }}
-    whileInView={{ opacity: 1 }}
-  >
+  {/* Lignes lumineuses horizontales */}
+  {[...Array(4)].map((_, i) => (
     <motion.div
-      className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#A2CA6C] to-transparent dark:via-[#21D375]"
-      initial={{ x: "-100%", opacity: 0 }}
-      whileInView={{ x: "100%", opacity: 0.5 }}
-      transition={{ duration: 2, delay: 0.5, repeat: Infinity, repeatDelay: 3 }}
+      key={`line-${i}`}
+      className="absolute h-px bg-gradient-to-r from-transparent via-[#A2CA6C] to-transparent"
+      style={{
+        top: `${15 + i * 25}%`,
+        left: 0,
+        right: 0,
+      }}
+      animate={{
+        x: ['-100%', '100%'],
+        opacity: [0, 0.5, 0],
+      }}
+      transition={{
+        duration: 5 + i,
+        repeat: Infinity,
+        delay: i * 0.8,
+        ease: "linear",
+      }}
     />
-    <motion.div
-      className="absolute bottom-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#A2CA6C] to-transparent dark:via-[#21D375]"
-      initial={{ x: "100%", opacity: 0 }}
-      whileInView={{ x: "-100%", opacity: 0.5 }}
-      transition={{ duration: 2, delay: 1, repeat: Infinity, repeatDelay: 3 }}
-    />
-  </motion.div>
-
-  {/* Ligne de séparation animée */}
-  <motion.div
-    className="absolute top-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-transparent via-[#A2CA6C] to-transparent dark:via-[#21D375]"
-    whileInView={{
-      width: "100%",
-      transition: { duration: 1, delay: 0.2 }
-    }}
-  />
+  ))}
 
   <div className="relative z-10">
-    {/* Titre avec animation de lettres qui explosent */}
+    {/* TITRE AVEC ANIMATION SPECTACULAIRE */}
     <motion.div
-      initial={{ opacity: 0, scale: 0 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.6, delay: 0.2 }}
+      initial={{ opacity: 0, y: -50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: false, margin: "-50px" }}
+      transition={{ 
+        type: "spring", 
+        stiffness: 100, 
+        damping: 15,
+        duration: 0.8 
+      }}
       className="text-center mb-8"
     >
-      <h2 className={`text-3xl md:text-4xl font-bold mb-3 relative`}>
-        {"Contact Me".split("").map((char, index) => (
+      <h2 className="text-3xl md:text-5xl font-bold mb-3 relative">
+        {["C", "o", "n", "t", "a", "c", "t", " ", "M", "e"].map((char, index) => (
           <motion.span
             key={index}
-            initial={{ opacity: 0, y: -50, rotate: -180 }}
-            whileInView={{ 
-              opacity: 1, 
-              y: 0, 
-              rotate: 0,
-              transition: {
-                type: "spring",
-                damping: 10,
-                stiffness: 100,
-                delay: 0.3 + index * 0.05
-              }
+            initial={{ opacity: 0, y: -30, rotateX: -90 }}
+            whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+            viewport={{ once: false }}
+            transition={{
+              type: "spring",
+              damping: 12,
+              stiffness: 100,
+              delay: index * 0.05,
             }}
             className={`inline-block ${
               dark ? "text-white" : "text-gray-800"
             }`}
             style={{ 
               textShadow: dark 
-                ? "0 0 10px #21D375" 
-                : "0 0 10px rgba(162, 202, 108, 0.5)" 
+                ? "0 0 20px #21D375" 
+                : "0 0 20px rgba(162, 202, 108, 0.5)" 
             }}
           >
-            {char === " " ? "\u00A0" : char}
+            {char}
           </motion.span>
         ))}
+        
+        {/* Anneau décoratif autour du titre */}
+        <motion.span
+          className="absolute -inset-4 rounded-full border-2 border-[#A2CA6C]/30"
+          initial={{ scale: 0, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          animate={{
+            scale: [1, 1.1, 1],
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            delay: 1,
+          }}
+        />
       </h2>
 
       <motion.p
-        initial={{ opacity: 0, scale: 0.5 }}
+        initial={{ opacity: 0, scale: 0.8 }}
         whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.6, duration: 0.5 }}
+        viewport={{ once: false }}
+        transition={{ delay: 0.4, duration: 0.5, type: "spring" }}
         className={`text-center max-w-xl mx-auto text-sm md:text-base ${
           dark ? "text-gray-300" : "text-gray-700"
         }`}
@@ -2053,38 +2076,40 @@ export default function Home() {
         Feel free to reach out if you want to work together or have a project in mind.
       </motion.p>
 
-      {/* Soulignement animé */}
+      {/* Ligne décorative avec effet de vague */}
       <motion.div
-        className="h-0.5 bg-gradient-to-r from-[#A2CA6C] to-transparent dark:from-[#21D375] mx-auto mt-3"
-        initial={{ width: 0, opacity: 0 }}
-        whileInView={{ width: "80px", opacity: 1 }}
-        transition={{ delay: 0.8, duration: 0.5 }}
-      />
+        className="relative h-0.5 bg-gradient-to-r from-transparent via-[#A2CA6C] to-transparent dark:via-[#21D375] mx-auto mt-4"
+        initial={{ width: 0 }}
+        whileInView={{ width: "120px" }}
+        viewport={{ once: false }}
+        transition={{ duration: 0.8, delay: 0.6 }}
+      >
+        <motion.div
+          className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 rounded-full bg-[#A2CA6C]"
+          animate={{
+            scale: [1, 1.5, 1],
+            opacity: [0.5, 1, 0.5],
+          }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+        />
+      </motion.div>
     </motion.div>
 
-    {/* FORM avec disposition gauche/droite */}
-    <form
-      ref={formRef}
-      onSubmit={handleSubmit}
-      className="flex flex-col gap-5"
-    >
-      {/* Première rangée - Name (gauche) et Email (droite) */}
+    {/* FORMULAIRE AVEC ANIMATIONS EN CASCADE */}
+    <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-5">
       <div className="grid md:grid-cols-2 gap-4">
-        {/* Name - Gauche */}
+        {/* Name */}
         <motion.div
-          initial={{ opacity: 0, x: -100, rotate: -45 }}
-          whileInView={{ 
-            opacity: 1, 
-            x: 0, 
-            rotate: 0,
-            transition: {
-              type: "spring",
-              damping: 15,
-              stiffness: 100,
-              delay: 0.9
-            }
+          initial={{ opacity: 0, x: -80, rotateY: 45 }}
+          whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
+          viewport={{ once: false }}
+          transition={{ 
+            type: "spring", 
+            damping: 15, 
+            stiffness: 100, 
+            delay: 0.7 
           }}
-          whileHover={{ scale: 1.05, x: 5 }}
+          whileHover={{ scale: 1.02, x: 3 }}
           className="relative group"
         >
           <label className={`block mb-1.5 text-xs font-medium ${
@@ -2107,13 +2132,9 @@ export default function Home() {
           <motion.div
             className="absolute inset-0 rounded-xl pointer-events-none"
             animate={{
-              boxShadow: dark ? [
-                "0 0 0px rgba(33, 211, 117, 0)",
-                "0 0 20px rgba(33, 211, 117, 0.3)",
-                "0 0 0px rgba(33, 211, 117, 0)",
-              ] : [
+              boxShadow: [
                 "0 0 0px rgba(162, 202, 108, 0)",
-                "0 0 20px rgba(162, 202, 108, 0.3)",
+                "0 0 15px rgba(162, 202, 108, 0.4)",
                 "0 0 0px rgba(162, 202, 108, 0)",
               ]
             }}
@@ -2121,21 +2142,18 @@ export default function Home() {
           />
         </motion.div>
 
-        {/* Email - Droite */}
+        {/* Email */}
         <motion.div
-          initial={{ opacity: 0, x: 100, rotate: 45 }}
-          whileInView={{ 
-            opacity: 1, 
-            x: 0, 
-            rotate: 0,
-            transition: {
-              type: "spring",
-              damping: 15,
-              stiffness: 100,
-              delay: 1.0
-            }
+          initial={{ opacity: 0, x: 80, rotateY: -45 }}
+          whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
+          viewport={{ once: false }}
+          transition={{ 
+            type: "spring", 
+            damping: 15, 
+            stiffness: 100, 
+            delay: 0.8 
           }}
-          whileHover={{ scale: 1.05, x: -5 }}
+          whileHover={{ scale: 1.02, x: -3 }}
           className="relative group"
         >
           <label className={`block mb-1.5 text-xs font-medium ${
@@ -2158,13 +2176,9 @@ export default function Home() {
           <motion.div
             className="absolute inset-0 rounded-xl pointer-events-none"
             animate={{
-              boxShadow: dark ? [
-                "0 0 0px rgba(33, 211, 117, 0)",
-                "0 0 20px rgba(33, 211, 117, 0.3)",
-                "0 0 0px rgba(33, 211, 117, 0)",
-              ] : [
+              boxShadow: [
                 "0 0 0px rgba(162, 202, 108, 0)",
-                "0 0 20px rgba(162, 202, 108, 0.3)",
+                "0 0 15px rgba(162, 202, 108, 0.4)",
                 "0 0 0px rgba(162, 202, 108, 0)",
               ]
             }}
@@ -2173,21 +2187,18 @@ export default function Home() {
         </motion.div>
       </div>
 
-      {/* Subject - Pleine largeur */}
+      {/* Subject */}
       <motion.div
-        initial={{ opacity: 0, y: 50, scale: 0.8 }}
-        whileInView={{ 
-          opacity: 1, 
-          y: 0, 
-          scale: 1,
-          transition: {
-            type: "spring",
-            damping: 15,
-            stiffness: 100,
-            delay: 1.1
-          }
+        initial={{ opacity: 0, y: 50, scale: 0.9 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: false }}
+        transition={{ 
+          type: "spring", 
+          damping: 15, 
+          stiffness: 100, 
+          delay: 0.9 
         }}
-        whileHover={{ scale: 1.02 }}
+        whileHover={{ scale: 1.01 }}
         className="relative group"
       >
         <label className={`block mb-1.5 text-xs font-medium ${
@@ -2210,13 +2221,9 @@ export default function Home() {
         <motion.div
           className="absolute inset-0 rounded-xl pointer-events-none"
           animate={{
-            boxShadow: dark ? [
-              "0 0 0px rgba(33, 211, 117, 0)",
-              "0 0 20px rgba(33, 211, 117, 0.3)",
-              "0 0 0px rgba(33, 211, 117, 0)",
-            ] : [
+            boxShadow: [
               "0 0 0px rgba(162, 202, 108, 0)",
-              "0 0 20px rgba(162, 202, 108, 0.3)",
+              "0 0 15px rgba(162, 202, 108, 0.4)",
               "0 0 0px rgba(162, 202, 108, 0)",
             ]
           }}
@@ -2224,21 +2231,18 @@ export default function Home() {
         />
       </motion.div>
 
-      {/* Message - Pleine largeur */}
+      {/* Message */}
       <motion.div
-        initial={{ opacity: 0, y: 50, scale: 0.8 }}
-        whileInView={{ 
-          opacity: 1, 
-          y: 0, 
-          scale: 1,
-          transition: {
-            type: "spring",
-            damping: 15,
-            stiffness: 100,
-            delay: 1.2
-          }
+        initial={{ opacity: 0, y: 50, scale: 0.9 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: false }}
+        transition={{ 
+          type: "spring", 
+          damping: 15, 
+          stiffness: 100, 
+          delay: 1.0 
         }}
-        whileHover={{ scale: 1.02 }}
+        whileHover={{ scale: 1.01 }}
         className="relative group"
       >
         <label className={`block mb-1.5 text-xs font-medium ${
@@ -2249,7 +2253,7 @@ export default function Home() {
         <textarea
           name="message"
           placeholder="Tell me about your project..."
-          rows={2}
+          rows={3}
           required
           className={`w-full px-5 py-3 border rounded-xl transition-all duration-300 outline-none resize-none text-sm
             ${dark 
@@ -2261,33 +2265,26 @@ export default function Home() {
         <motion.div
           className="absolute inset-0 rounded-xl pointer-events-none"
           animate={{
-            boxShadow: dark ? [
-              "0 0 0px rgba(33, 211, 117, 0)",
-              "0 0 20px rgba(33, 211, 117, 0.3)",
-              "0 0 0px rgba(33, 211, 117, 0)",
-            ] : [
+            boxShadow: [
               "0 0 0px rgba(162, 202, 108, 0)",
-              "0 0 20px rgba(162, 202, 108, 0.3)",
+              "0 0 15px rgba(162, 202, 108, 0.4)",
               "0 0 0px rgba(162, 202, 108, 0)",
             ]
           }}
-          transition={{ duration: 2, repeat: Infinity, delay: 1.5 }}
+          transition={{ duration: 2, repeat: Infinity, delay: 1.2 }}
         />
       </motion.div>
 
-      {/* Bouton centré */}
+      {/* Bouton avec animation 3D */}
       <motion.div
         initial={{ opacity: 0, scale: 0, rotate: -180 }}
-        whileInView={{ 
-          opacity: 1, 
-          scale: 1, 
-          rotate: 0,
-          transition: {
-            type: "spring",
-            damping: 12,
-            stiffness: 80,
-            delay: 1.3
-          }
+        whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+        viewport={{ once: false }}
+        transition={{ 
+          type: "spring", 
+          damping: 12, 
+          stiffness: 80, 
+          delay: 1.2 
         }}
         className="relative group mt-2 flex justify-center"
       >
@@ -2301,21 +2298,29 @@ export default function Home() {
             }
           `}
           whileHover={{ 
-            scale: 1.1,
+            scale: 1.08,
             boxShadow: dark 
-              ? "0 0 30px rgba(33, 211, 117, 0.5)"
-              : "0 0 30px rgba(162, 202, 108, 0.5)"
+              ? "0 0 30px rgba(33, 211, 117, 0.6)"
+              : "0 0 30px rgba(162, 202, 108, 0.6)"
           }}
           whileTap={{ scale: 0.95 }}
+          animate={{
+            y: [0, -2, 0],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            delay: 1.5,
+          }}
         >
           {/* Effet de brillance */}
           <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
             animate={{
               x: ["-100%", "200%"],
             }}
             transition={{
-              duration: 2,
+              duration: 1.5,
               repeat: Infinity,
               ease: "linear"
             }}
@@ -2335,8 +2340,8 @@ export default function Home() {
               <>
                 <span>Send Message</span>
                 <motion.span
-                  animate={{ x: [0, 8, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
+                  animate={{ x: [0, 6, 0] }}
+                  transition={{ duration: 1.2, repeat: Infinity }}
                 >
                   →
                 </motion.span>
@@ -2347,49 +2352,92 @@ export default function Home() {
       </motion.div>
     </form>
 
-    {/* Réseaux sociaux simplifiés */}
+    {/* Réseaux sociaux avec animation */}
     <motion.div
       initial={{ opacity: 0, y: 30 }}
-      whileInView={{ 
-        opacity: 1, 
-        y: 0,
-        transition: { delay: 1.4, duration: 0.5 }
-      }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: false }}
+      transition={{ delay: 1.4, duration: 0.6, type: "spring" }}
       className="flex flex-col items-center gap-4 mt-8"
     >
-      {/* Ligne décorative */}
       <motion.div 
-        className="w-16 h-px bg-gradient-to-r from-transparent via-[#A2CA6C] to-transparent dark:via-[#21D375]"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.8, 0.3]
-        }}
-        transition={{ duration: 2, repeat: Infinity }}
-      />
+        className="flex gap-4"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: false }}
+        transition={{ delay: 1.6, staggerChildren: 0.1 }}
+      >
+        {[
+          { icon: Github, href: "https://github.com", label: "GitHub" },
+          { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+          { icon: Mail, href: "mailto:email@example.com", label: "Email" },
+        ].map((social, index) => (
+          <motion.a
+            key={index}
+            href={social.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`p-3 rounded-full transition-all duration-300 ${
+              dark 
+                ? "bg-white/10 hover:bg-white/20 text-white" 
+                : "bg-black/5 hover:bg-black/10 text-gray-700"
+            }`}
+            whileHover={{ 
+              scale: 1.15,
+              rotate: 5,
+              transition: { type: "spring", stiffness: 400 }
+            }}
+            whileTap={{ scale: 0.9 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
+            transition={{ delay: 1.6 + index * 0.1 }}
+          >
+            <social.icon size={20} />
+          </motion.a>
+        ))}
+      </motion.div>
       
-      {/* Petit texte */}
       <motion.p 
         className={`text-xs ${
           dark ? "text-gray-400" : "text-gray-600"
         }`}
         animate={{
-          opacity: [0.5, 1, 0.5]
+          opacity: [0.5, 1, 0.5],
         }}
-        transition={{ duration: 3, repeat: Infinity }}
+        transition={{ duration: 2, repeat: Infinity }}
       >
-        I will reply to you as soon as possible.
+        ✨ I will reply to you as soon as possible ✨
       </motion.p>
     </motion.div>
   </div>
 
-  {/* Ligne de séparation animée en bas */}
-  <motion.div
-    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-transparent via-[#A2CA6C] to-transparent dark:via-[#21D375]"
-    whileInView={{
-      width: "100%",
-      transition: { duration: 1, delay: 0.5 }
-    }}
-  />
+  {/* Coin décoratifs animés */}
+  {[...Array(4)].map((_, i) => (
+    <motion.div
+      key={`corner-${i}`}
+      className="absolute w-8 h-8 border border-[#A2CA6C]/50"
+      style={{
+        top: i < 2 ? '20px' : 'auto',
+        bottom: i >= 2 ? '20px' : 'auto',
+        left: i % 2 === 0 ? '20px' : 'auto',
+        right: i % 2 === 1 ? '20px' : 'auto',
+        borderTopWidth: i < 2 ? '2px' : '0',
+        borderBottomWidth: i >= 2 ? '2px' : '0',
+        borderLeftWidth: i % 2 === 0 ? '2px' : '0',
+        borderRightWidth: i % 2 === 1 ? '2px' : '0',
+      }}
+      animate={{
+        scale: [1, 1.1, 1],
+        opacity: [0.3, 0.8, 0.3],
+      }}
+      transition={{
+        duration: 2,
+        repeat: Infinity,
+        delay: i * 0.3,
+      }}
+    />
+  ))}
 </motion.section>
       </div>
     </main>
