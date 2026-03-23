@@ -33,7 +33,6 @@ import {
   Award,
   Clock,
   Award,
-  Star,
   ThumbsUp,
   HeartHandshake,
   Target,
