@@ -772,331 +772,351 @@ export default function Home() {
           </div>
         </div>
 
-        {/* SECTION ABOUT */}
-        <section id="about" className="py-20 px-6 overflow-hidden relative">
-  {/* Éléments d'arrière-plan animés - OPTIMISÉS ET PERFORMANTS */}
+        {/* SECTION ABOUT - DESIGN TOTALEMENT REPENSÉ */}
+<section id="about" className="py-20 px-6 overflow-hidden relative min-h-screen flex items-center">
+  {/* NOUVEAU FOND DYNAMIQUE AVEC EFFET DE PROFONDEUR */}
   <div className="absolute inset-0 overflow-hidden pointer-events-none">
-    {/* Grille statique avec animation d'opacité seulement */}
-    <div 
-      className="absolute inset-0 animate-pulse-slow"
+    {/* Gradient dynamique en mouvement */}
+    <motion.div
+      className="absolute inset-0"
       style={{
-        backgroundImage: `radial-gradient(circle at 1px 1px, #A2CA6C 1px, transparent 0)`,
-        backgroundSize: '40px 40px',
-        opacity: 0.12
+        background: 'radial-gradient(circle at center, rgba(162,202,108,0.1) 0%, rgba(0,0,0,0) 70%)',
+      }}
+      animate={{
+        scale: [1, 1.2, 1],
+        opacity: [0.3, 0.5, 0.3],
+      }}
+      transition={{
+        duration: 8,
+        repeat: Infinity,
+        ease: "easeInOut"
       }}
     />
 
-    {/* Un seul cercle concentrique élégant */}
+    {/* Vagues de lumière horizontales */}
+    {[...Array(6)].map((_, i) => (
+      <motion.div
+        key={`wave-${i}`}
+        className="absolute h-px w-full"
+        style={{
+          top: `${15 + i * 12}%`,
+          background: `linear-gradient(90deg, transparent, ${i % 2 === 0 ? '#A2CA6C' : '#21D375'}40, transparent)`,
+        }}
+        animate={{
+          x: ['-100%', '100%'],
+          opacity: [0, 0.5, 0],
+        }}
+        transition={{
+          duration: 8 + i * 1.5,
+          repeat: Infinity,
+          delay: i * 1.2,
+          ease: "linear"
+        }}
+      />
+    ))}
+
+    {/* Cercle pulsant central */}
     <motion.div
-      className="absolute rounded-full border border-[#A2CA6C]/20"
+      className="absolute rounded-full"
       style={{
         left: '50%',
         top: '50%',
-        width: '450px',
-        height: '450px',
-        marginLeft: '-225px',
-        marginTop: '-225px',
+        width: '500px',
+        height: '500px',
+        marginLeft: '-250px',
+        marginTop: '-250px',
+        background: 'radial-gradient(circle, rgba(162,202,108,0.1) 0%, rgba(162,202,108,0) 70%)',
       }}
       animate={{
-        scale: [1, 1.08, 1],
-        rotate: [0, 360],
+        scale: [1, 1.3, 1],
+        opacity: [0.2, 0.4, 0.2],
       }}
       transition={{
-        duration: 25,
+        duration: 6,
         repeat: Infinity,
-        ease: "linear"
+        ease: "easeInOut"
       }}
     />
 
-    {/* Particules élégantes en mouvement orbital */}
-    {Array.from({ length: 24 }).map((_, i) => {
-      const angle = (i / 24) * Math.PI * 2;
-      const radius = 200 + Math.sin(i) * 30;
-      const delay = i * 0.15;
-      
-      return (
+    {/* Étoiles filantes */}
+    {[...Array(8)].map((_, i) => (
+      <motion.div
+        key={`star-${i}`}
+        className="absolute w-1 h-1 rounded-full bg-[#A2CA6C]"
+        style={{
+          left: `${Math.random() * 100}%`,
+          top: `${Math.random() * 100}%`,
+        }}
+        animate={{
+          x: [0, 200, 400],
+          y: [0, 100, 200],
+          opacity: [0, 1, 0],
+          scale: [0, 1.5, 0],
+        }}
+        transition={{
+          duration: 3 + Math.random() * 2,
+          repeat: Infinity,
+          delay: i * 2,
+          ease: "linear"
+        }}
+      />
+    ))}
+  </div>
+
+  <div className="max-w-6xl mx-auto relative z-10 w-full">
+    {/* TITRE AVEC EFFET DE RÉVÉLATION SPECTACULAIRE */}
+    <motion.div
+      className="text-center mb-20"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-100px" }}
+    >
+      <motion.div
+        className="relative inline-block"
+        initial={{ scale: 0.5, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ 
+          type: "spring",
+          damping: 15,
+          stiffness: 100,
+          delay: 0.2
+        }}
+      >
+        <h2 className="text-6xl md:text-8xl font-black tracking-tighter">
+          <span className="relative">
+            <span className="absolute inset-0 blur-2xl bg-[#A2CA6C]/30 animate-pulse" />
+            <span className="relative bg-gradient-to-r from-[#A2CA6C] via-[#21D375] to-[#244539] bg-clip-text text-transparent">
+              À PROPOS
+            </span>
+          </span>
+        </h2>
+        
+        {/* Anneau décoratif */}
         <motion.div
-          key={i}
-          className="absolute w-1 h-1 rounded-full"
-          style={{
-            left: '50%',
-            top: '50%',
-            background: i % 3 === 0 ? '#A2CA6C' : i % 3 === 1 ? '#244539' : '#A2CA6C80',
-          }}
+          className="absolute -inset-8 rounded-full border-2 border-[#A2CA6C]/30"
           animate={{
-            x: [Math.cos(angle) * radius, Math.cos(angle + Math.PI) * radius, Math.cos(angle) * radius],
-            y: [Math.sin(angle) * radius, Math.sin(angle + Math.PI) * radius, Math.sin(angle) * radius],
-            scale: [0.5, 1.2, 0.5],
-            opacity: [0.2, 0.6, 0.2],
+            scale: [1, 1.2, 1],
+            rotate: [0, 180, 360],
+            opacity: [0.3, 0.6, 0.3],
           }}
           transition={{
-            duration: 12,
+            duration: 8,
             repeat: Infinity,
-            delay: delay,
             ease: "linear"
           }}
         />
-      );
-    })}
-  </div>
+      </motion.div>
 
-  <div className="max-w-6xl mx-auto relative z-10">
-    {/* Titre avec animation élégante et fluide */}
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="text-center mb-16"
-    >
-      <h2 className="text-5xl md:text-7xl font-bold inline-block relative">
-        <span className="bg-gradient-to-r from-[#A2CA6C] via-[#21D375] to-[#244539] bg-clip-text text-transparent">
-          ABOUT
-        </span>
-        
-        {/* Ligne décorative animée */}
-        <motion.div
-          className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 h-0.5 bg-gradient-to-r from-transparent via-[#A2CA6C] to-transparent"
-          initial={{ width: 0 }}
-          whileInView={{ width: "80%" }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-        />
-        
-        {/* Petit point brillant */}
-        <motion.div
-          className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-2 h-2 rounded-full bg-[#A2CA6C]"
-          initial={{ scale: 0 }}
-          whileInView={{ scale: 1 }}
-          viewport={{ once: true }}
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.5, 1, 0.5],
-          }}
-          transition={{
-            // Première animation (entrée)
-            duration: 0.5,
-            delay: 0.6,
-            // Animation continue
-            scale: {
-              duration: 2,
-              repeat: Infinity,
-              delay: 0.8,
-              ease: "easeInOut"
-            },
-            opacity: {
-              duration: 2,
-              repeat: Infinity,
-              delay: 0.8,
-              ease: "easeInOut"
-            }
-          }}
-        />
-      </h2>
-      
       <motion.p
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.4 }}
-        className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mt-8"
+        transition={{ duration: 0.6, delay: 0.5 }}
+        className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mt-8"
       >
-        Découvrez mon parcours et ma passion pour le développement
+        Découvrez l'univers créatif d'un développeur passionné
       </motion.p>
     </motion.div>
 
-    <div className="grid md:grid-cols-2 gap-12 items-start">
-      {/* Texte avec apparition fluide */}
+    <div className="grid lg:grid-cols-2 gap-16 items-center">
+      {/* CARTE DE PRÉSENTATION AVEC EFFET 3D */}
       <motion.div
-        initial={{ opacity: 0, x: -30 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        initial={{ opacity: 0, x: -50, rotateY: -15 }}
+        whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
+        className="relative group"
       >
-        <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6 text-lg">
-          As a passionate freelance Fullstack developer, I design modern, robust, and scalable web applications. 
-          My goal is to transform ideas into high-performing and intuitive digital products.
-        </p>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#A2CA6C] to-[#21D375] rounded-2xl blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500" />
+        
+        <div className="relative bg-white/5 dark:bg-[#244539]/30 backdrop-blur-sm rounded-2xl p-8 border border-[#A2CA6C]/20">
+          {/* Badge flottant */}
+          <motion.div
+            animate={{
+              y: [0, -10, 0],
+              rotate: [0, 5, -5, 0],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="absolute -top-4 -right-4 bg-[#A2CA6C] text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg"
+          >
+            ✨ 3+ years
+          </motion.div>
 
-        <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
-          I work with technologies such as React, Next.js, Node.js, Python, PHP, Laravel, Java and C#, 
-          with an emphasis on code quality, user experience and performance.
-        </p>
-
-        {/* Indicateur d'expertise élégant */}
-        <motion.div 
-          className="flex items-center gap-3 mt-8 p-4 rounded-xl bg-gradient-to-r from-[#A2CA6C]/10 to-transparent"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-        >
-          <div className="relative">
-            <div className="w-10 h-10 rounded-full bg-[#A2CA6C]/20 flex items-center justify-center">
-              <div className="w-2 h-2 bg-[#A2CA6C] rounded-full" />
-            </div>
+          <div className="space-y-6">
             <motion.div
-              className="absolute inset-0 rounded-full border border-[#A2CA6C]/50"
-              animate={{
-                scale: [1, 1.5, 1],
-                opacity: [0.5, 0, 0.5],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeOut",
-              }}
-            />
-          </div>
-          <div>
-            <span className="text-sm font-semibold text-[#A2CA6C] dark:text-[#21D375]">
-              Fullstack Developer
-            </span>
-            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-              5+ technological mastery
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, type: "spring" }}
+              className="w-20 h-20 rounded-full bg-gradient-to-br from-[#A2CA6C] to-[#21D375] flex items-center justify-center mx-auto"
+            >
+              <span className="text-3xl text-white font-bold">JO</span>
+            </motion.div>
+
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg text-center">
+              Développeur Fullstack passionné par la création d'expériences numériques 
+              innovantes et performantes. Je transforme vos idées en solutions technologiques 
+              robustes et élégantes.
             </p>
+
+            {/* Compteurs animés */}
+            <div className="grid grid-cols-3 gap-4 pt-4">
+              {[
+                { value: 10, label: "Projets", icon: "🚀" },
+                { value: 8, label: "Clients", icon: "🤝" },
+                { value: 24, label: "Support", icon: "⚡" }
+              ].map((stat, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.6 + idx * 0.1 }}
+                  className="text-center"
+                >
+                  <div className="text-2xl mb-1">{stat.icon}</div>
+                  <div className="text-2xl font-bold text-[#A2CA6C]">
+                    <motion.span
+                      initial={{ count: 0 }}
+                      whileInView={{ count: stat.value }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 2, delay: 0.8 }}
+                    >
+                      {({ count }: any) => Math.floor(count)}
+                    </motion.span>
+                    {stat.value === 10 ? "+" : stat.value === 8 ? "+" : "/7"}
+                  </div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">{stat.label}</div>
+                </motion.div>
+              ))}
+            </div>
           </div>
-        </motion.div>
+        </div>
       </motion.div>
 
-      {/* Blocs valeurs avec animations au hover uniquement */}
+      {/* CARTES DE COMPÉTENCES AVEC ANIMATIONS ORIGINALES */}
       <motion.div 
-        className="space-y-5"
-        initial={{ opacity: 0, x: 30 }}
+        className="space-y-6"
+        initial={{ opacity: 0, x: 50 }}
         whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.2 }}
       >
-        {/* Carte Expertise technique */}
+        {/* Stack technologique */}
         <motion.div
-          whileHover={{ 
-            scale: 1.02, 
-            x: 5,
-            transition: { duration: 0.2 }
-          }}
-          className="p-5 rounded-xl bg-gradient-to-br from-[#A2CA6C] to-[#8BB55C] dark:from-[#244539] dark:to-[#1A3329] shadow-md cursor-pointer group"
+          whileHover={{ scale: 1.02 }}
+          className="relative overflow-hidden rounded-xl p-6 bg-gradient-to-r from-[#A2CA6C]/10 to-transparent border border-[#A2CA6C]/30"
         >
-          <div className="flex items-start gap-4">
-            <div className="p-2 bg-white/20 rounded-lg group-hover:scale-110 transition-transform duration-300">
-              <Cpu size={28} className="text-black dark:text-white" />
-            </div>
-            <div className="flex-1">
-              <h3 className="text-lg font-semibold mb-1 text-black dark:text-white">
-                Expertise technique
-              </h3>
-              <p className="text-black/80 dark:text-white/90 text-sm">
-                Full-stack development with clean architecture and best practices.
-              </p>
-              {/* Mini barre de progression décorative */}
-              <div className="mt-3 h-1 bg-white/20 rounded-full overflow-hidden">
-                <div className="h-full w-3/4 bg-white/60 rounded-full" />
-              </div>
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-[#A2CA6C]/0 via-[#A2CA6C]/5 to-[#A2CA6C]/0"
+            animate={{
+              x: ['-100%', '100%'],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+          />
+          
+          <div className="relative">
+            <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+              <span className="text-2xl">⚡</span> Tech Stack
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {["React", "Next.js", "Node.js", "Python", "Laravel", "Tailwind"].map((tech, i) => (
+                <motion.span
+                  key={tech}
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.8 + i * 0.05 }}
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  className="px-3 py-1 bg-[#A2CA6C]/20 text-[#A2CA6C] rounded-full text-sm font-medium"
+                >
+                  {tech}
+                </motion.span>
+              ))}
             </div>
           </div>
         </motion.div>
 
-        {/* Carte Performance */}
+        {/* Engagement */}
         <motion.div
-          whileHover={{ 
-            scale: 1.02, 
-            x: 5,
-            transition: { duration: 0.2 }
-          }}
-          className="p-5 rounded-xl bg-gradient-to-br from-[#A2CA6C] to-[#8BB55C] dark:from-[#244539] dark:to-[#1A3329] shadow-md cursor-pointer group"
+          whileHover={{ scale: 1.02 }}
+          className="rounded-xl p-6 bg-gradient-to-r from-[#21D375]/10 to-transparent border border-[#21D375]/30"
         >
-          <div className="flex items-start gap-4">
-            <div className="p-2 bg-white/20 rounded-lg group-hover:rotate-12 transition-transform duration-300">
-              <IconGauge size={28} stroke={1.5} className="text-black dark:text-white" />
-            </div>
-            <div className="flex-1">
-              <h3 className="text-lg font-semibold mb-1 text-black dark:text-white">
-                Performance optimisée
-              </h3>
-              <p className="text-black/80 dark:text-white/90 text-sm">
-                Fast, SEO-optimized applications with 90+ Lighthouse scores.
-              </p>
-              {/* Indicateur de vitesse */}
-              <div className="flex gap-1 mt-3">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <div key={i} className="h-1 flex-1 bg-white/20 rounded-full overflow-hidden">
-                    <div 
-                      className="h-full bg-white/60 rounded-full" 
-                      style={{ width: i === 5 ? '100%' : `${i * 20}%` }}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
+          <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+            <span className="text-2xl">💡</span> Mon engagement
+          </h3>
+          <div className="space-y-3">
+            {[
+              "Code propre et maintenable",
+              "Performance optimale",
+              "Veille technologique continue",
+              "Communication transparente"
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 1 + i * 0.1 }}
+                className="flex items-center gap-2"
+              >
+                <motion.div
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    backgroundColor: ['#A2CA6C', '#21D375', '#A2CA6C']
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    delay: i * 0.3
+                  }}
+                  className="w-2 h-2 rounded-full bg-[#A2CA6C]"
+                />
+                <span className="text-gray-600 dark:text-gray-400">{item}</span>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
 
-        {/* Carte Collaboration */}
+        {/* Call to action */}
         <motion.div
-          whileHover={{ 
-            scale: 1.02, 
-            x: 5,
-            transition: { duration: 0.2 }
-          }}
-          className="p-5 rounded-xl bg-gradient-to-br from-[#A2CA6C] to-[#8BB55C] dark:from-[#244539] dark:to-[#1A3329] shadow-md cursor-pointer group"
+          whileHover={{ scale: 1.02 }}
+          className="rounded-xl p-6 text-center bg-gradient-to-r from-[#A2CA6C] to-[#21D375] text-white"
         >
-          <div className="flex items-start gap-4">
-            <div className="p-2 bg-white/20 rounded-lg group-hover:-translate-y-1 transition-transform duration-300">
-              <Handshake size={28} weight="duotone" className="text-black dark:text-white" />
-            </div>
-            <div className="flex-1">
-              <h3 className="text-lg font-semibold mb-1 text-black dark:text-white">
-                Collaboration proactive
-              </h3>
-              <p className="text-black/80 dark:text-white/90 text-sm">
-                Clear communication, agile methodology, and strategic support.
-              </p>
-              {/* Indicateur de collaboration */}
-              <div className="flex gap-1 mt-3">
-                {[1, 2, 3].map((i) => (
-                  <motion.div
-                    key={i}
-                    className="w-6 h-6 rounded-full bg-white/20"
-                    animate={{
-                      scale: [1, 1.1, 1],
-                    }}
-                    transition={{
-                      duration: 1.5,
-                      repeat: Infinity,
-                      delay: i * 0.2,
-                    }}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
+          <motion.div
+            animate={{
+              y: [0, -5, 0],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="text-3xl mb-2"
+          >
+            🎯
+          </motion.div>
+          <p className="font-semibold mb-3">Prêt à concrétiser votre projet ?</p>
+          <motion.a
+            href="#contact"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-block px-6 py-2 bg-white text-[#A2CA6C] rounded-full font-medium shadow-lg hover:shadow-xl transition-all"
+          >
+            Discutons-en →
+          </motion.a>
         </motion.div>
       </motion.div>
     </div>
-    
-    {/* Bouton d'action élégant */}
-    <motion.div
-      className="text-center mt-12"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: 0.6 }}
-    >
-      <motion.a
-        href="#contact"
-        className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-[#A2CA6C] to-[#8BB55C] dark:from-[#244539] dark:to-[#1A3329] text-white font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group"
-        whileHover={{ scale: 1.03 }}
-        whileTap={{ scale: 0.98 }}
-      >
-        <span>Let's work together</span>
-        <motion.span
-          animate={{ x: [0, 4, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className="group-hover:translate-x-1 transition-transform"
-        >
-          →
-        </motion.span>
-      </motion.a>
-    </motion.div>
   </div>
 </section>
 
