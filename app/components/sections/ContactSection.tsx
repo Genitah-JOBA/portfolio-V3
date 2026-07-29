@@ -12,11 +12,11 @@ import {
   AtSign, 
   MessageSquare, 
   Briefcase,
-  CheckCircle2,
-  XCircle,
+  Check,
+  X,
+  AlertCircle,
   Info,
-  AlertTriangle,
-  X
+  X as XIcon
 } from 'lucide-react';
 import { ACCENT_COLOR, TEXT_COLOR, BG_COLOR } from '@/app/constants';
 import { MessageBoxState } from '@/app/types';
@@ -89,10 +89,10 @@ export const ContactSection = () => {
   ];
 
   const messageIcons = {
-    success: CheckCircle2,
-    error: XCircle,
+    success: Check,
+    error: X,
     info: Info,
-    warning: AlertTriangle,
+    warning: AlertCircle,
   };
 
   return (
@@ -118,7 +118,7 @@ export const ContactSection = () => {
                 className="absolute top-2 right-2 p-1 rounded-full transition-all duration-200 hover:scale-110"
                 style={{ color: TEXT_COLOR }}
               >
-                <X size={18} />
+                <XIcon size={18} />
               </button>
               
               <div className="flex items-start gap-3 pr-6">
