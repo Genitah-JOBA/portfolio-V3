@@ -115,7 +115,7 @@ export const HeroSection = () => {
               </motion.a>
               
               <motion.a
-                href="/cv.pdf"
+                href="/CV_JOBA_Razafindrasoa_Genitah.pdf"
                 download
                 className="px-6 py-3 rounded-full font-semibold border backdrop-blur-sm"
                 style={{ borderColor: ACCENT_COLOR, color: ACCENT_COLOR }}

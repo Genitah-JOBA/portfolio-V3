@@ -176,7 +176,7 @@ export default function Header() {
             { href: "#acceuil", icon: <HouseLine size={22} weight="duotone" />, label: "Home" },
             { href: "#about", icon: <User weight="duotone" size={22} />, label: "About" },
             { href: "#experience", icon: <Briefcase size={22} />, label: "Experience" }, // NOUVEAU
-            { href: "#skills", icon: <IconCode stroke={1.5} size={20} />, label: "Skills" },
+            { href: "#skills", icon: <IconCode stroke={1.5} size={20} />, label: "Knowledge" },
             //{ href: "#knowledge", icon: <BookOpen size={22} />, label: "Knowledge" },
             { href: "#projects", icon: <StarsIcon size={20} />, label: "Projects" },
             { href: "#contact", icon: <IconMail size={18} />, label: "Contact" },

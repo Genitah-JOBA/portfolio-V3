@@ -23,7 +23,10 @@ import {
   Briefcase,
   GraduationCap,
   Award,
-  Calendar
+  Calendar,
+  Figma,
+  type,
+  type LucideIcon
 } from "lucide-react";
 import { Project, SkillCategory, Experience } from '@/app/types';
 
@@ -38,26 +41,39 @@ export const skillCategories: SkillCategory[] = [
     skills: [
       { name: "HTML", level: 90 },
       { name: "CSS", level: 85 },
+      { name: "Design responsive", level: 85 },
       { name: "JavaScript", level: 80 },
-      { name: "React", level: 40 }, 
-      { name: "Next.js", level: 60 }, 
-      { name: "Tailwind", level: 80 }, 
+      { name: "TypeScript", level: 70 },
+      { name: "React.js", level: 75 },
+      { name: "Next.js", level: 65 },
       { name: "Vue.js", level: 70 },
       { name: "Angular", level: 60 },
+      { name: "Tailwind CSS", level: 80 },
+      { name: "Vite", level: 70 },
     ] 
   },
   { 
     title: "Backend", 
     icon: React.createElement(Server),
     skills: [
-      { name: "Node.js", level: 50 },
-      { name: "Express", level: 40 },
-      { name: "Laravel", level: 75 }, 
+      { name: "Node.js", level: 70 },
+      { name: "Express.js", level: 65 },
+      { name: "PHP", level: 75 },
+      { name: "Laravel", level: 75 },
       { name: "Java", level: 70 },
-      { name: "Python", level: 85 }, 
-      { name: "C#", level: 75 },
       { name: "Spring Boot", level: 70 },
-      { name: "ASP.Net", level: 50 },
+      { name: "Python", level: 85 },
+      { name: "API REST", level: 80 },
+    ] 
+  },
+  { 
+    title: "Databases", 
+    icon: React.createElement(Database),
+    skills: [
+      { name: "MySQL", level: 90 },
+      { name: "PostgreSQL", level: 70 },
+      { name: "Supabase", level: 60 },
+      { name: "Firebase", level: 50 },
     ] 
   },
   { 
@@ -65,28 +81,22 @@ export const skillCategories: SkillCategory[] = [
     icon: React.createElement(Smartphone),
     skills: [
       { name: "Flutter", level: 60 },
-    ] 
-  },
-  { 
-    title: "Databases", 
-    icon: React.createElement(Database),
-    skills: [
-      { name: "MySQL", level: 90 }, 
-      { name: "PostgreSQL", level: 40 }, 
-      { name: "Supabase", level: 40 },
-      { name: "Firebase", level: 30 },
+      { name: "React Native", level: 40 },
     ] 
   },
   { 
     title: "DevOps & Tools", 
     icon: React.createElement(Cloud),
     skills: [
-      { name: "GitHub", level: 85 }, 
-      { name: "Git", level: 80 },
+      { name: "Git", level: 85 },
+      { name: "GitHub", level: 85 },
       { name: "Git Bash", level: 70 },
-      { name: "Vercel", level: 50 },
-      { name: "Render", level: 30 },
-      { name: "Netlify", level: 30 },
+      { name: "Postman", level: 75 },
+      { name: "VS Code", level: 90 },
+      { name: "Figma", level: 65 },
+      { name: "Vercel", level: 70 },
+      { name: "Netlify", level: 65 },
+      { name: "Render", level: 50 },
     ] 
   },
 ];

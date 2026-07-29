@@ -181,7 +181,7 @@ export const ContactSection = () => {
               className="group relative w-full py-4 rounded-xl font-semibold overflow-hidden transition-all duration-300"
               style={{ 
                 background: `linear-gradient(135deg, ${ACCENT_COLOR}, ${ACCENT_COLOR}80)`,
-                color: BG_COLOR  // ← Maintenant BG_COLOR est défini
+                color: BG_COLOR
               }}
             >
               <span className="relative z-10 flex items-center justify-center gap-3">

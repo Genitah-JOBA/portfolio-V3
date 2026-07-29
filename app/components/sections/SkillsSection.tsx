@@ -3,226 +3,80 @@
 import { motion } from 'framer-motion';
 import { ACCENT_COLOR, TEXT_COLOR, skillCategories } from '@/app/constants';
 import { 
-  Binary, 
   Layout, 
-  Database, 
+  Server, 
+  Smartphone,
   Cloud,
   Braces,
-  ArrowUp,
   Paintbrush,
-  Server,
   Coffee,
-  Gem,
   GitBranch,
   Globe,
-  Layers,
-  Package,
-  Code,
   Terminal,
-  Box,
-  Laptop,
-  AppWindow,
-  Workflow,
-  GitPullRequest,
-  Container,
+  Database,
+  Code,
+  Figma,
   LucideIcon
 } from 'lucide-react';
 
-/**
- * Interface pour un nœud de l'arbre des compétences
- */
-interface SkillNode {
-  name: string;
-  icon: LucideIcon;
-  level?: number;
-  children?: SkillNode[];
-}
-
-/**
- * Map des icônes par nom de compétence
- * Utilisé pour associer chaque compétence à une icône Lucide
- */
+// Map des icônes par compétence (basée sur les données de index.ts)
 const skillIconMap: Record<string, LucideIcon> = {
   'HTML': Layout,
   'CSS': Paintbrush,
+  'Design responsive': Layout,
   'JavaScript': Braces,
+  'TypeScript': Braces,
+  'React.js': Braces,
   'React': Braces,
-  'Next.js': ArrowUp,
-  'Tailwind': Paintbrush,
+  'Next.js': Globe,
   'Vue.js': Globe,
   'Angular': Layout,
+  'Tailwind CSS': Paintbrush,
+  'Tailwind': Paintbrush,
+  'Vite': Code,
   'Node.js': Coffee,
+  'Express.js': Server,
   'Express': Server,
+  'PHP': Terminal,
   'Laravel': Code,
   'Java': Terminal,
-  'Python': Terminal,
-  'C#': Gem,
   'Spring Boot': Server,
-  'ASP.Net': Server,
+  'Python': Terminal,
+  'API REST': Code,
   'MySQL': Database,
   'PostgreSQL': Database,
   'Supabase': Database,
   'Firebase': Database,
-  'GitHub': GitBranch,
+  'Flutter': Smartphone,
+  'React Native': Smartphone,
   'Git': GitBranch,
+  'GitHub': GitBranch,
   'Git Bash': Terminal,
+  'Postman': Code,
+  'VS Code': Code,
+  'Figma': Figma,
   'Vercel': Cloud,
-  'Render': Cloud,
   'Netlify': Cloud,
+  'Render': Cloud,
 };
 
-/**
- * Map des icônes par catégorie
- */
 const categoryIconMap: Record<string, LucideIcon> = {
   'Frontend': Layout,
   'Backend': Server,
   'Databases': Database,
+  'Mobile': Smartphone,
   'DevOps & Tools': Cloud,
 };
 
-/**
- * Fonction pour construire l'arbre des compétences à partir des données constants
- * @returns {SkillNode} L'arbre des compétences
- */
-const buildSkillTree = (): SkillNode => {
-  // Récupérer les catégories et leurs compétences
-  const categories = skillCategories.map(cat => ({
-    name: cat.title,
-    icon: categoryIconMap[cat.title] || Layout,
-    level: Math.round(cat.skills.reduce((acc, s) => acc + s.level, 0) / cat.skills.length),
-    children: cat.skills.map(skill => ({
-      name: skill.name,
-      icon: skillIconMap[skill.name] || Code,
-      level: skill.level,
-    }))
-  }));
+// Catégories à afficher
+const categoriesToShow = ['Frontend', 'Backend', 'Databases', 'Mobile', 'DevOps & Tools'];
 
-  // Calculer le niveau moyen global
-  const allLevels = categories.flatMap(cat => cat.children.map(s => s.level || 0));
-  const averageLevel = Math.round(allLevels.reduce((acc, l) => acc + l, 0) / allLevels.length);
-
-  return {
-    name: "Fullstack",
-    icon: Binary,
-    level: averageLevel,
-    children: categories
-  };
-};
-
-/**
- * Composant SkillsSection - Style Tree
- * Affiche les compétences comme un arbre généalogique avec des icônes Lucide
- * Utilise les données de skillCategories depuis constants
- */
 export const SkillsSection = () => {
-  // Construction de l'arbre à partir des constants
-  const skillTree = buildSkillTree();
-
-  /**
-   * RenderTree - Fonction récursive pour afficher l'arbre des compétences
-   * @param node - Le nœud actuel à afficher
-   * @param level - Le niveau de profondeur dans l'arbre
-   * @param index - L'index du nœud dans son niveau
-   */
-  const renderTree = (node: SkillNode, level: number = 0, index: number = 0) => {
-    const isRoot = level === 0;
-    const isCategory = level === 1;
-    const size = isRoot ? "w-20 h-20" : isCategory ? "w-16 h-16" : "w-12 h-12";
-    const iconSize = isRoot ? 36 : isCategory ? 28 : 20;
-    const padding = isRoot ? "p-6" : isCategory ? "p-4" : "p-3";
-    const width = isRoot ? "w-36" : isCategory ? "w-28" : "w-24";
-    const textSize = isRoot ? "text-xl" : isCategory ? "text-base" : "text-sm";
-    const NodeIcon = node.icon;
-
-    return (
-      <div key={`${node.name}-${level}`} className="flex flex-col items-center">
-        {/* Ligne verticale */}
-        {level > 0 && (
-          <div className="h-8 w-px" style={{ backgroundColor: `${ACCENT_COLOR}30` }} />
-        )}
-
-        {/* Nœud */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ delay: level * 0.1 + index * 0.05, type: "spring" }}
-          className="relative group"
-        >
-          <div
-            className={`${padding} ${width} rounded-2xl border text-center transition-all duration-300 hover:-translate-y-1`}
-            style={{
-              backgroundColor: `${ACCENT_COLOR}${isRoot ? 20 : isCategory ? 15 : 10}`,
-              borderColor: `${ACCENT_COLOR}${isRoot ? 40 : isCategory ? 30 : 20}`,
-            }}
-          >
-            {/* Icône */}
-            <div 
-              className={`${size} mx-auto rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-6`}
-              style={{
-                backgroundColor: `${ACCENT_COLOR}${isRoot ? 20 : 10}`,
-              }}
-            >
-              <NodeIcon size={iconSize} style={{ color: ACCENT_COLOR }} strokeWidth={1.5} />
-            </div>
-            
-            {/* Nom */}
-            <p className={`font-bold ${textSize} mt-2`}>
-              {node.name}
-            </p>
-            
-            {/* Niveau */}
-            {node.level !== undefined && (
-              <motion.p 
-                className="text-xs font-mono"
-                style={{ color: ACCENT_COLOR }}
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.3 + level * 0.1 + index * 0.05 }}
-              >
-                {node.level}%
-              </motion.p>
-            )}
-
-            {/* Effet de glow au hover */}
-            <motion.div
-              className="absolute -inset-1 rounded-2xl pointer-events-none"
-              style={{ 
-                background: `radial-gradient(circle at 50% 50%, ${ACCENT_COLOR}15, transparent 70%)`,
-                opacity: 0,
-              }}
-              whileHover={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
-            />
-          </div>
-
-          {/* Lignes de connexion vers les enfants */}
-          {node.children && node.children.length > 0 && (
-            <div className="flex justify-center gap-8 mt-4">
-              <div className="w-px h-8" style={{ backgroundColor: `${ACCENT_COLOR}20` }} />
-            </div>
-          )}
-        </motion.div>
-
-        {/* Enfants */}
-        {node.children && node.children.length > 0 && (
-          <div className={`flex ${level === 0 ? 'gap-12' : 'gap-6'} mt-4 flex-wrap justify-center`}>
-            {node.children.map((child: SkillNode, i: number) => (
-              <div key={i} className="flex flex-col items-center">
-                {renderTree(child, level + 1, i)}
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-    );
-  };
-
   return (
-    <section id="skills" className="py-24 px-6 relative">
+    <section id="skills" className="py-20 px-6">
       <div className="max-w-6xl mx-auto">
         
-        {/* En-tête */}
+        {/* En-tête simple */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -237,7 +91,7 @@ export const SkillsSection = () => {
             style={{ borderColor: `${ACCENT_COLOR}30` }}
           >
             <span className="text-sm" style={{ color: ACCENT_COLOR }}>
-              ✦ MY SKILL ✦
+              ✦ MY KNOWLEDGE ✦
             </span>
           </motion.div>
           <h2 className="text-5xl md:text-7xl font-bold tracking-tight">
@@ -246,37 +100,65 @@ export const SkillsSection = () => {
               className="text-transparent bg-clip-text" 
               style={{ backgroundImage: `linear-gradient(135deg, ${ACCENT_COLOR}, ${ACCENT_COLOR}80)` }}
             >
-              Expertise
+              knowledge
             </span>
           </h2>
           <p className="text-white/50 mt-4">Hierarchy of my technical expertise</p>
         </motion.div>
 
-        {/* Arbre */}
-        <div className="flex justify-center overflow-x-auto p-4">
-          {renderTree(skillTree)}
-        </div>
+        {/* Grille simple */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+          {skillCategories
+            .filter(cat => categoriesToShow.includes(cat.title))
+            .map((category, idx) => {
+              const Icon = categoryIconMap[category.title] || Layout;
+              
+              return (
+                <motion.div
+                  key={category.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="rounded-xl border p-4"
+                  style={{
+                    backgroundColor: `${ACCENT_COLOR}05`,
+                    borderColor: `${ACCENT_COLOR}15`,
+                  }}
+                >
+                  {/* Titre */}
+                  <div className="flex items-center gap-2 mb-3 pb-2 border-b" 
+                    style={{ borderColor: `${ACCENT_COLOR}10` }}
+                  >
+                    <Icon size={18} style={{ color: ACCENT_COLOR }} />
+                    <h3 className="font-semibold text-xs" style={{ color: ACCENT_COLOR }}>
+                      {category.title}
+                    </h3>
+                    <span className="ml-auto text-xs text-white/30">
+                      {category.skills.length}
+                    </span>
+                  </div>
 
-        {/* Légende */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-          className="flex justify-center gap-6 mt-12 text-xs text-white/40"
-        >
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full" style={{ backgroundColor: `${ACCENT_COLOR}40` }} />
-            <span>Root</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full" style={{ backgroundColor: `${ACCENT_COLOR}25` }} />
-            <span>Category</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full" style={{ backgroundColor: `${ACCENT_COLOR}15` }} />
-            <span>Technology</span>
-          </div>
-        </motion.div>
+                  {/* Liste des compétences */}
+                  <div className="flex flex-wrap gap-1.5">
+                    {category.skills.map((skill) => (
+                      <span
+                        key={skill.name}
+                        className="px-2.5 py-1 rounded-full text-xs font-medium transition-all hover:scale-105"
+                        style={{
+                          backgroundColor: `${ACCENT_COLOR}15`,
+                          color: TEXT_COLOR,
+                          border: `1px solid ${ACCENT_COLOR}10`,
+                        }}
+                      >
+                        {skill.name}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
+              );
+            })}
+        </div>
       </div>
     </section>
   );
