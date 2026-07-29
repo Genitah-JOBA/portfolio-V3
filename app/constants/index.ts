@@ -25,8 +25,7 @@ import {
   Award,
   Calendar,
   Figma,
-  type,
-  type LucideIcon
+  Type
 } from "lucide-react";
 import { Project, SkillCategory, Experience } from '@/app/types';
 
