@@ -12,7 +12,7 @@ import {
   AtSign, 
   MessageSquare, 
   Briefcase,
-  CheckCircle,
+  CheckCircle2,
   XCircle,
   Info,
   AlertTriangle,
@@ -89,7 +89,7 @@ export const ContactSection = () => {
   ];
 
   const messageIcons = {
-    success: CheckCircle,
+    success: CheckCircle2,
     error: XCircle,
     info: Info,
     warning: AlertTriangle,
