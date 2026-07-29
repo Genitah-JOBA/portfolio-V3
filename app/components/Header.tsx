@@ -6,7 +6,7 @@ import { User, HouseLine } from "@phosphor-icons/react";
 import { IconCode, IconMail } from '@tabler/icons-react';
 import { StarsIcon } from "hugeicons-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { BookOpen, Briefcase } from "lucide-react"; // Ajout des deux icônes
+import { BookOpen, Briefcase } from "lucide-react";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,6 +17,24 @@ export default function Header() {
   const accentColor = "#14B89C";
   const textColor = "#FFFFFF";
   const backgroundColor = "#0A0F1A";
+
+  const navItems = [
+    { href: "#acceuil", icon: <HouseLine size={22} weight="duotone" />, label: "Home" },
+    { href: "#about", icon: <User weight="duotone" size={22} />, label: "About" },
+    { href: "#experience", icon: <Briefcase size={22} />, label: "Experience" },
+    { href: "#skills", icon: <IconCode stroke={1.5} size={20} />, label: "Knowledge" },
+    { href: "#projects", icon: <StarsIcon size={20} />, label: "Projects" },
+    { href: "#contact", icon: <IconMail size={18} />, label: "Contact" },
+  ];
+
+  const mobileNavItems = [
+    { href: "#acceuil", icon: <HouseLine size={18} weight="duotone" />, label: "Home" },
+    { href: "#about", icon: <User weight="duotone" size={18} />, label: "About" },
+    { href: "#experience", icon: <Briefcase size={18} />, label: "Experience" },
+    { href: "#skills", icon: <IconCode stroke={1.5} size={18} />, label: "Knowledge" },
+    { href: "#projects", icon: <StarsIcon size={18} />, label: "Projects" },
+    { href: "#contact", icon: <IconMail size={18} />, label: "Contact" },
+  ];
 
   useEffect(() => {
     setMounted(true);
@@ -36,16 +54,55 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
+  // NOUVELLE FONCTION DE SCROLL AMÉLIORÉE
   const smoothScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
-    const targetElement = document.querySelector(targetId);
-    if (targetElement) {
-      targetElement.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-      setIsOpen(false);
-    }
+    e.stopPropagation(); // Empêche la propagation
+
+    // Ferme le menu immédiatement
+    setIsOpen(false);
+
+    // Attend un tick pour que le menu se ferme avant de scroll
+    setTimeout(() => {
+      // Récupère l'élément cible
+      const targetElement = document.querySelector(targetId);
+      
+      if (targetElement) {
+        // Calcul de la position avec offset pour le header fixe
+        const headerHeight = 80; // Hauteur approximative du header
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+
+        // Scroll vers la position
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+
+        // Mise à jour de l'URL sans rechargement (optionnel)
+        if (history.pushState) {
+          history.pushState(null, '', targetId);
+        }
+      } else {
+        // Fallback si l'élément n'est pas trouvé
+        console.warn(`Élément ${targetId} non trouvé`);
+        
+        // Essaie avec un délai plus long (pour les composants lazy-loaded)
+        setTimeout(() => {
+          const targetElementRetry = document.querySelector(targetId);
+          if (targetElementRetry) {
+            const headerHeight = 80;
+            const elementPosition = targetElementRetry.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }, 300);
+      }
+    }, 100); // Petit délai pour laisser le temps au menu de se fermer
   };
 
   const headerVariants = {
@@ -172,15 +229,7 @@ export default function Header() {
 
         {/* Menu desktop */}
         <nav className="hidden md:flex items-center space-x-6" style={{ color: textColor }}>
-          {[
-            { href: "#acceuil", icon: <HouseLine size={22} weight="duotone" />, label: "Home" },
-            { href: "#about", icon: <User weight="duotone" size={22} />, label: "About" },
-            { href: "#experience", icon: <Briefcase size={22} />, label: "Experience" }, // NOUVEAU
-            { href: "#skills", icon: <IconCode stroke={1.5} size={20} />, label: "Knowledge" },
-            //{ href: "#knowledge", icon: <BookOpen size={22} />, label: "Knowledge" },
-            { href: "#projects", icon: <StarsIcon size={20} />, label: "Projects" },
-            { href: "#contact", icon: <IconMail size={18} />, label: "Contact" },
-          ].map((item, index) => (
+          {navItems.map((item, index) => (
             <motion.div
               key={item.href}
               initial={{ opacity: 0, y: -20, rotateX: -45 }}
@@ -276,14 +325,7 @@ export default function Header() {
               transformStyle: 'preserve-3d',
             }}
           >
-            {[
-              { href: "#about", label: "About", icon: <User size={18} /> },
-              { href: "#experience", label: "Experience", icon: <Briefcase size={18} /> }, // NOUVEAU
-              { href: "#skills", label: "Skills", icon: <IconCode size={18} /> },
-              { href: "#knowledge", label: "Knowledge", icon: <BookOpen size={18} /> },
-              { href: "#projects", label: "Projects", icon: <StarsIcon size={18} /> },
-              { href: "#contact", label: "Contact", icon: <IconMail size={18} /> },
-            ].map((item, index) => (
+            {mobileNavItems.map((item, index) => (
               <motion.div
                 key={item.href}
                 initial={{ opacity: 0, x: -20 }}
