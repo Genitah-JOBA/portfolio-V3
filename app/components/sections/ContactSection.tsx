@@ -1,10 +1,24 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, Send, Sparkles, User, AtSign, MessageSquare, Briefcase } from 'lucide-react';
-import { MessageBox } from '@/app/components/MessageBox';
-import { ACCENT_COLOR, TEXT_COLOR, BG_COLOR } from '@/app/constants'; // ← Ajoutez BG_COLOR ici
+import { motion, AnimatePresence } from 'framer-motion';
+import { 
+  Github, 
+  Linkedin, 
+  Mail, 
+  Send, 
+  Sparkles, 
+  User, 
+  AtSign, 
+  MessageSquare, 
+  Briefcase,
+  CheckCircle,
+  XCircle,
+  Info,
+  AlertTriangle,
+  X
+} from 'lucide-react';
+import { ACCENT_COLOR, TEXT_COLOR, BG_COLOR } from '@/app/constants';
 import { MessageBoxState } from '@/app/types';
 
 export const ContactSection = () => {
@@ -16,11 +30,50 @@ export const ContactSection = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
-      setMessageBox({ show: true, type: 'success', message: 'Message sent successfully!' });
-      formRef.current?.reset();
+    
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      subject: formData.get('subject'),
+      message: formData.get('message'),
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setMessageBox({ 
+          show: true, 
+          type: 'success', 
+          message: 'Message envoyé avec succès ! Je vous répondrai dans les plus brefs délais.' 
+        });
+        formRef.current?.reset();
+      } else {
+        setMessageBox({ 
+          show: true, 
+          type: 'error', 
+          message: result.error || "Erreur lors de l'envoi du message. Veuillez réessayer." 
+        });
+      }
+    } catch (error) {
+      console.error('Erreur:', error);
+      setMessageBox({ 
+        show: true, 
+        type: 'error', 
+        message: "Une erreur est survenue. Veuillez vérifier votre connexion et réessayer." 
+      });
+    } finally {
       setLoading(false);
-    }, 1000);
+    }
   };
 
   const socialLinks = [
@@ -35,14 +88,106 @@ export const ContactSection = () => {
     { name: 'subject', placeholder: 'Subject', icon: Briefcase, type: 'text' },
   ];
 
+  const messageIcons = {
+    success: CheckCircle,
+    error: XCircle,
+    info: Info,
+    warning: AlertTriangle,
+  };
+
   return (
     <>
-      {messageBox.show && (
-        <MessageBox 
-          {...messageBox} 
-          onClose={() => setMessageBox({ show: false, type: '', message: '' })} 
-        />
-      )}
+      <AnimatePresence>
+        {messageBox.show && (
+          <motion.div
+            initial={{ opacity: 0, y: -20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -20, scale: 0.95 }}
+            className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-md"
+          >
+            <div 
+              className="relative p-4 rounded-xl shadow-2xl border backdrop-blur-sm"
+              style={{
+                background: `linear-gradient(135deg, ${ACCENT_COLOR}15, ${ACCENT_COLOR}05)`,
+                borderColor: `${ACCENT_COLOR}30`,
+                backdropFilter: 'blur(10px)'
+              }}
+            >
+              <button
+                onClick={() => setMessageBox({ show: false, type: '', message: '' })}
+                className="absolute top-2 right-2 p-1 rounded-full transition-all duration-200 hover:scale-110"
+                style={{ color: TEXT_COLOR }}
+              >
+                <X size={18} />
+              </button>
+              
+              <div className="flex items-start gap-3 pr-6">
+                {(() => {
+                  const Icon = messageIcons[messageBox.type as keyof typeof messageIcons] || Info;
+                  return (
+                    <div className="flex-shrink-0 mt-0.5">
+                      <Icon 
+                        size={22} 
+                        style={{ 
+                          color: messageBox.type === 'success' 
+                            ? ACCENT_COLOR
+                            : messageBox.type === 'error'
+                            ? '#ef4444'
+                            : messageBox.type === 'warning'
+                            ? '#f59e0b'
+                            : '#3b82f6'
+                        }} 
+                      />
+                    </div>
+                  );
+                })()}
+                <div>
+                  <p 
+                    className="text-sm font-medium"
+                    style={{ 
+                      color: messageBox.type === 'success' 
+                        ? ACCENT_COLOR
+                        : messageBox.type === 'error'
+                        ? '#ef4444'
+                        : messageBox.type === 'warning'
+                        ? '#f59e0b'
+                        : '#3b82f6'
+                    }}
+                  >
+                    {messageBox.type === 'success' && 'Succès'}
+                    {messageBox.type === 'error' && 'Erreur'}
+                    {messageBox.type === 'warning' && 'Attention'}
+                    {messageBox.type === 'info' && 'Information'}
+                  </p>
+                  <p 
+                    className="text-sm mt-0.5"
+                    style={{ color: `${TEXT_COLOR}CC` }}
+                  >
+                    {messageBox.message}
+                  </p>
+                </div>
+              </div>
+
+              {/* Barre de progression */}
+              <motion.div
+                initial={{ width: '100%' }}
+                animate={{ width: '0%' }}
+                transition={{ duration: 5, ease: 'linear' }}
+                className="absolute bottom-0 left-0 h-0.5 rounded-b-xl"
+                style={{ 
+                  background: `linear-gradient(90deg, ${ACCENT_COLOR}, ${ACCENT_COLOR}40)`,
+                  opacity: 0.5
+                }}
+                onAnimationComplete={() => {
+                  setTimeout(() => {
+                    setMessageBox({ show: false, type: '', message: '' });
+                  }, 100);
+                }}
+              />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <motion.section
         id="contact"
@@ -55,12 +200,10 @@ export const ContactSection = () => {
           borderColor: `${ACCENT_COLOR}15`
         }}
       >
-        {/* Decorative elements */}
         <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full blur-3xl opacity-10" style={{ backgroundColor: ACCENT_COLOR }} />
         <div className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full blur-3xl opacity-5" style={{ backgroundColor: ACCENT_COLOR }} />
         
         <div className="relative z-10">
-          {/* Header */}
           <motion.div 
             initial={{ opacity: 0, y: -20 }} 
             whileInView={{ opacity: 1, y: 0 }} 
@@ -87,7 +230,6 @@ export const ContactSection = () => {
             </p>
           </motion.div>
 
-          {/* Form */}
           <motion.form 
             ref={formRef} 
             onSubmit={handleSubmit} 
@@ -124,7 +266,6 @@ export const ContactSection = () => {
               ))}
             </div>
 
-            {/* Subject */}
             <motion.div 
               className="relative"
               whileHover={{ y: -1 }}
@@ -148,7 +289,6 @@ export const ContactSection = () => {
               />
             </motion.div>
 
-            {/* Message */}
             <motion.div 
               className="relative"
               whileHover={{ y: -1 }}
@@ -172,7 +312,6 @@ export const ContactSection = () => {
               />
             </motion.div>
 
-            {/* Submit Button */}
             <motion.button 
               type="submit" 
               disabled={loading}
@@ -209,7 +348,6 @@ export const ContactSection = () => {
             </motion.button>
           </motion.form>
 
-          {/* Social Links */}
           <motion.div 
             className="flex justify-center gap-4 mt-10"
             initial={{ opacity: 0, y: 20 }}
@@ -231,9 +369,8 @@ export const ContactSection = () => {
                   color: TEXT_COLOR
                 }}
               >
-                <Icon size={22} className="transition-colors duration-300 group-hover:text-[#6EE7B7]" />
+                <Icon size={22} className="transition-colors duration-300" style={{ color: TEXT_COLOR }} />
                 
-                {/* Tooltip */}
                 <motion.span
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileHover={{ opacity: 1, scale: 1 }}
@@ -249,7 +386,6 @@ export const ContactSection = () => {
             ))}
           </motion.div>
 
-          {/* Stats */}
           <motion.div 
             className="flex justify-center gap-8 mt-8 text-center"
             initial={{ opacity: 0 }}
