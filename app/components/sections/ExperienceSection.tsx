@@ -71,18 +71,16 @@ export const ExperienceSection = () => {
           viewport={{ once: true }}
           className="text-center mb-14"
         >
-          <motion.div 
-            className="inline-flex items-center justify-center w-14 h-14 rounded-2xl mb-4"
-            style={{ 
-              background: `linear-gradient(135deg, ${ACCENT_COLOR}20, ${ACCENT_COLOR}05)`,
-              border: `1px solid ${ACCENT_COLOR}15`
-            }}
-            initial={{ scale: 0, rotate: -10 }}
-            whileInView={{ scale: 1, rotate: 0 }}
-            viewport={{ once: true }}
-            transition={{ type: "spring", stiffness: 200 }}
+          <motion.div
+            initial={{ scale: 0.5, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="inline-block px-6 py-2 rounded-full mb-4 border"
+            style={{ borderColor: `${ACCENT_COLOR}30` }}
           >
-            <Rocket size={24} style={{ color: ACCENT_COLOR }} />
+            <span className="text-sm" style={{ color: ACCENT_COLOR }}>
+              MY EXPERIENCES
+            </span>
           </motion.div>
           
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
