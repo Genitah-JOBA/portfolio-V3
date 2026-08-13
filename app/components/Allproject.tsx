@@ -26,7 +26,7 @@ const allProjects: Project[] = [
     title: "Aura Privée", 
     category: "Fullstack", 
     desc: "Aura Privé is an online boutique for high-end furniture and interior decoration, offering an exclusive collection of modern furniture combining absolute comfort and timeless design.", 
-    image: "/Image3.jpg", 
+    image: "/e-commerce.jpg", 
     tags: ["React", "Tailwind", "Framer Motion", "Node.js", "Express", "PostgreSQL", "Vercel", "Render", "GitHub"], 
     demo: "https://auraprivefrontend.vercel.app/" 
   },
@@ -35,7 +35,7 @@ const allProjects: Project[] = [
     title: "Parent Malagasy", 
     category: "Frontend", 
     desc: "Parent Malagasy is a web-based parental monitoring application that allows parents to manage the health, growth, and development of their children from 0 to 12 years old.", 
-    image: "/parentmalagasy.jpg", 
+    image: "/monitoring.jpg", 
     tags: ["Vue.js", "Tailwind", "Framer Motion", "Chart.js", "LocalStorage", "GitHub", "Netlify"], 
     demo: "https://parentmalagasy.netlify.app" 
   },
@@ -44,7 +44,7 @@ const allProjects: Project[] = [
     title: "ExamPrep",
     category: "Mobile",
     desc: "ExamPrep is a multi-platform mobile exam preparation application that centralizes review sheets, timed tests and progress tracking for EMIT Fianarantsoa students and teachers.", 
-    image: "/ExamPrep1.png", 
+    image: "/elearning.jpg", 
     tags: ["Flutter", "Dart", "Supabase", "GitHub"], 
     demo: "https://examprep-ie6gt2y9x-genitahrazafindrasoa-2926s-projects.vercel.app/" 
   },
@@ -53,7 +53,7 @@ const allProjects: Project[] = [
     title: "Modern Portfolio", 
     category: "Frontend", 
     desc: "3D Portfolio with animations.", 
-    image: "/Image2.jpg", 
+    image: "/portfolio.jpg", 
     tags: ["Next.js", "Tailwind", "Framer"], 
     demo: "#" 
   },
@@ -62,7 +62,7 @@ const allProjects: Project[] = [
     title: "Invitation Anniversaire", 
     category: "Frontend", 
     desc: "Invitation interactive avec compte à rebours pour fête d'anniversaire.", 
-    image: "/Anniversaire.jpg", 
+    image: "/Birthday.jpg", 
     tags: ["HTML", "CSS", "JavaScript", "Countdown"], 
     demo: "https://genitah-joba.github.io/InvitationAnniv/" 
   },
@@ -71,7 +71,7 @@ const allProjects: Project[] = [
     title: "Auralis", 
     category: "Frontend", 
     desc: "Auralis is a modern and elegant music player, built with React and Vite. It offers an intuitive user interface inspired by Apple Music, with a clean design and immersive visual effects.", 
-    image: "/Auralis1.png", 
+    image: "/music.jpg", 
     tags: ["React", "Vite", "CSS"], 
     demo: "https://music-nu-khaki.vercel.app/" 
   }
