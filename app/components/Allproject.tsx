@@ -26,7 +26,7 @@ const allProjects: Project[] = [
     title: "Aura Privée", 
     category: "Fullstack", 
     desc: "Aura Privé is an online boutique for high-end furniture and interior decoration, offering an exclusive collection of modern furniture combining absolute comfort and timeless design.", 
-    image: "/e-commerce.jpg", 
+    image: "/commerce1.jpg", 
     tags: ["React", "Tailwind", "Framer Motion", "Node.js", "Express", "PostgreSQL", "Vercel", "Render", "GitHub"], 
     demo: "https://auraprivefrontend.vercel.app/" 
   },
@@ -35,7 +35,7 @@ const allProjects: Project[] = [
     title: "Parent Malagasy", 
     category: "Frontend", 
     desc: "Parent Malagasy is a web-based parental monitoring application that allows parents to manage the health, growth, and development of their children from 0 to 12 years old.", 
-    image: "/monitoring.jpg", 
+    image: "/parent.jpg", 
     tags: ["Vue.js", "Tailwind", "Framer Motion", "Chart.js", "LocalStorage", "GitHub", "Netlify"], 
     demo: "https://parentmalagasy.netlify.app" 
   },
